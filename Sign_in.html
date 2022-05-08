@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="sign in page for Miu MUN " />
+    <title>MUN Sign-in</title>
+
+    <link rel="shortcut icon" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="img/transLogo.png" />
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="Sign_in.css" rel="stylesheet" />
+  </head>
+
+  <body class="text-center">
+    <main class="form-signin" style="border: 5px blue">
+      <form>
+        <img
+          class="mb-4"
+          id
+          src="img/transLogo.png"
+          alt=""
+          width="150"
+          height="150"
+        />
+        <h1 class="h3 mb-3 fw-normal" style="color: #d59f38">Sign in</h1>
+
+        <div class="form-floating shadow">
+          <input
+            type="email"
+            class="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"
+          />
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating shadow">
+          <input
+            type="password"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="Password"/>
+          <label for="floatingPassword">Password</label>
+        </div>
+
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me" />
+            <label style="color: #d59f38">Remember me ?</label>
+          </label>
+        </div>
+
+        <button
+          class="btnhover w-100 btn btn-lg btn-primary shadow"
+          type="submit"
+        >
+          Sign in
+        </button>
+        <p class="mt-5 mb-3 text-muted"></p>
+      </form>
+    </main>
+  </body>
+</html>
