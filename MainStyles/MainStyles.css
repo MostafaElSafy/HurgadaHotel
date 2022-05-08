@@ -5,6 +5,10 @@
 /* ////////////////// */
 
 /* Maincolors */
+.background
+{
+  color: antiquewhite;
+}
 .dark1 {
   color: #caf0f8;
 }
