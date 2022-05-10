@@ -1,3 +1,5 @@
+<?php include_once '../db_connect.php'?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,42 +29,39 @@
                     <div class="col-md-5 ">
                         <div class="booking-cta">
                             <h1>Hurghada Grand Hotel</h1>
-                            <p>Welcome to Hurghada Grand hotel, make yourself comfortable, and get excited for the best Vacation you will ever have.
-                            </p>
+                            <p>Welcome to Hurghada Grand hotel, make yourself comfortable, and get excited for the best Vacation you will ever have. </p>
                         </div>
                     </div>
-
-
                     <!---------------------------- right side(form) ----------------------------->
                     <div class="col-md-7 ">
                         <div class="booking-form">
-                            <form>
+                            <form action="signup.php" method="POST">
                                 <!-- ///////////////////////////////Personal Data //////////////////////////// -->
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <span class="form-label">First name</span>
-                                            <input class="form-control" type="text" required>
+                                            <input class="form-control" type="text" name="firstName" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <span class="form-label">Last name</span>
-                                            <input class="form-control" type="text" required>
+                                            <input class="form-control" type="text" name="lastName" required>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <span class="form-label">Date of Birth</span>
-                                            <input class="form-control" type="date" required>
+                                            <input class="form-control" type="date" name="dof" required>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <span class="form-label">Phone</span>
-                                            <input class="form-control" type="number" required>
+                                            <input class="form-control" type="number" name="phone" required>
                                         </div>
                                     </div>
                                 </div>
@@ -71,14 +70,14 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <span class="form-label">Email</span>
-                                            <input class="form-control" type="email" required>
+                                            <input class="form-control" type="email" name="email" required>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <span class="form-label">Password</span>
-                                            <input class="form-control" type="password" required>
+                                            <input class="form-control" type="password" name="password" required>
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +86,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <span class="form-label">Confirm password</span>
-                                            <input class="form-control" type="password" required>
+                                            <input class="form-control" type="password" name="cpassword" required>
                                         </div>
                                     </div>
 
@@ -96,7 +95,7 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <span class="form-label flex-wrap">Family Count</span>
-                                            <select class="form-control">
+                                            <select class="form-control" name="familyCount">
                                                 <option>0</option>
                                                 <option>1</option>
                                                 <option>2</option>
@@ -114,7 +113,7 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <span class="form-label flex-wrap">Nationality</span>
-                                            <input class="form-control" type="text" required>
+                                            <input class="form-control" type="text" name="nationality" required>
 
                                         </div>
                                     </div>
@@ -127,7 +126,7 @@
 
                                     <div class="col-sm-3 mx-3">
                                         <div class="form-btn">
-                                            <button class="submit-btn" style="margin-left: 5%;">Sign Up</button>
+                                            <button type="submit" name="submit" class="submit-btn" style="margin-left: 5%;">Sign Up</button>
                                         </div>
                                     </div>
                                     <div class="col-sm-2 d-flex float-end flex-nowrap  mt-4">
