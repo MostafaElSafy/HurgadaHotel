@@ -1,0 +1,14 @@
+.color-row
+{
+background-color:#caf0f8;
+}
+div.ahmed
+{
+    width:95%;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%,-50%);
+}
+
+
