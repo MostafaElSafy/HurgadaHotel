@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-    <!--top nav style-->
+
     <link rel="stylesheet" type="text/css" href="Manager_styles.css">
     <link rel="stylesheet" href="../assets/css/MainStyles.css">
     <link rel="stylesheet" href="style.css">
@@ -20,46 +20,46 @@
 
 </head>
 
-
 <body>
-<!--<div class="background-image">
-    <div class="container">
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="Manager_view(QC).php">Home</a>
-            <a href="Manage_Rooms.php">Manage Rooms</a>
-            <a href="Manage_Receptionist.php">Manage Receptionist</a>
-            <a href="Manage_request.php">Manage Request</a>
-        </div>
--->
-        <div id="main">
 
-            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-        </div>
 
-        <script>
-            function openNav() {
-                document.getElementById("mySidenav").style.width = "250px";
-                document.getElementById("main").style.marginLeft = "250px";
-                document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-            }
-
-            function closeNav() {
-                document.getElementById("mySidenav").style.width = "0";
-                document.getElementById("main").style.marginLeft = "0";
-                document.body.style.backgroundColor = "white";
-            }
-        </script>
-
-<!--
+    <!--Navigation bar-->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="Manager_view(QC).php">Home</a>
+        <a href="Manage_Rooms.php">Manage Rooms</a>
+        <a href="Manage_Receptionist.php">Manage Receptionist</a>
+        <a href="Manage_request.php">Manage Request</a>
     </div>
-    <div class="MainPage">
+
+    <div id="main">
+
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.body.style.backgroundColor = "white";
+        }
+    </script>
+
+    <!--Background image-->
+    <div class="bg-image"></div>
+
+    <div class="bg-text">
         <h1>Manager View</h1>
+        <p>name</p>
+    </div>
 
-    </div>-->
-    
 
-                    
 </body>
 
 </html>
