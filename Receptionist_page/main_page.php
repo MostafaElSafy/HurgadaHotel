@@ -59,7 +59,7 @@
 </div>
 
   <main class="col-sm-3  col-sm-12 px-sm-4">
-    <div class="d-flex justify-content-between flex-wrap flex-md-wrap align-items-center pt-5 pb-4 mb-3 border-bottom ">
+    <div class="d-flex justify-content-between flex-wrap flex-md-wrap align-items-center pt-3 pb-2 mb-3 border-bottom ">
 
     
 
@@ -119,7 +119,7 @@
 
 
     </div>
-  
+    
     <div class="pos">
       <table class="table table-responsive table-bordered ">
         <thead style="background-color: #caf0f8; color: #707070; font-weight: 300; font-style: normal;">
@@ -226,7 +226,7 @@
   <thead>
     <tr>
       <th scope="col"></th>
-      <th scope="col">name</th>
+      <th scope="col">Name</th>
       <th scope="col">Room no</th>
       <th scope="col">Room type</th>
       <th scope="col">  </th>
