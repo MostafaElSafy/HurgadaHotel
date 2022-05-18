@@ -1,4 +1,64 @@
-<?php include_once '../db_connect.php'?>
+<?php
+session_start();
+
+include("../db_connect.php");
+include("../functions.php");
+
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    //something was posted
+    $fn = $_POST['firstName'];
+    $ln = $_POST['lastName'];
+    $dof = $_POST['dof'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $pass = $_POST['password'];
+    $famCount = $_POST['familyCount'];
+    $nationality = $_POST['nationality'];
+    $guest_id;
+
+
+
+ if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+
+
+    // Validate password strength
+    $uppercase = preg_match('@[A-Z]@', $pass);
+    $lowercase = preg_match('@[a-z]@', $pass);
+    $number    = preg_match('@[0-9]@', $pass);
+    $specialChars = preg_match('@[^\w]@', $pass);
+
+    if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+       $passerr= "Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.";
+    } else {
+       $passgood = 'Strong password.';
+    }
+
+
+ }
+
+
+
+
+    if (!empty($email) && !empty($phone)) {
+
+        //save to database
+        $guest_id = random_num(20);
+        $query = " INSERT INTO guest(firstname,lastname,email,password,dateofbirth,extramembers,guest_id,phonenumber,nationality)
+        VALUES ('$fn','$ln','$email','$pass','$dof','$famCount','$guest_id','$phone','$nationality') ";
+        mysqli_query($conn, $query);
+
+        header("Location: signin.php");
+        die;
+    } else {
+
+        $message = " Didnt write to database";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+    }
+}
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +95,7 @@
                     <!---------------------------- right side(form) ----------------------------->
                     <div class="col-md-7 ">
                         <div class="booking-form">
-                            <form action="signup.php" method="POST">
+                            <form method="POST">
                                 <!-- ///////////////////////////////Personal Data //////////////////////////// -->
                                 <div class="row">
                                     <div class="col-sm-3">
@@ -61,7 +121,8 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <span class="form-label">Phone</span>
-                                            <input class="form-control" type="number" name="phone" required>
+                                            <input type="text" pattern="[0][0-9]{10}" class="form-control" name="phone"
+                                             oninvalid="this.setCustomValidity('please enter a valid phone number')" required>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +138,10 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <span class="form-label">Password</span>
-                                            <input class="form-control" type="password" name="password" required>
+                                            <input class="form-control" type="password"
+                                             name="password"
+                                             required>
+
                                         </div>
                                     </div>
                                 </div>
@@ -153,6 +217,12 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+
 </body>
 
 </html>
