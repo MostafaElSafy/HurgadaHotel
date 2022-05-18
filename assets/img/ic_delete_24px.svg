@@ -1,0 +1,12 @@
+<svg id="ic_delete_24px" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #95989a;
+        background-color:red;
+        
+      }
+    </style>
+  </defs>
+  <path id="ic_delete_24px-2" data-name="ic_delete_24px" class="cls-1" d="M5.857,13.667A1.565,1.565,0,0,0,7.571,15h6.857a1.565,1.565,0,0,0,1.714-1.333v-8H5.857ZM17,3.667H14L13.143,3H8.857L8,3.667H5V5H17Z" transform="translate(-5 -3)"/>
+</svg>
