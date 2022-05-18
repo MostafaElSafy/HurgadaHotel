@@ -8,11 +8,12 @@
   <title>Document</title>
   <!-- Bootstrap -->
   <link type="text/css" rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <!-- Custom stlylesheet -->
   <link rel="stylesheet" href="../assets/css/MainStyles.css">
   <link rel="stylesheet" href="style_receptionist.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  
+
 </head>
 
 <body>
@@ -82,7 +83,7 @@
             <select class="form-select">
               <option selected>Status</option>
               <option value="1">Booked</option>
-              <option value="2">empty</option>
+              <option value="2">Empty</option>
             </select>
           </div>
         </div>
@@ -125,16 +126,51 @@
       <table class="table table-responsive table-bordered">
         <thead style="background-color: #caf0f8; color: #707070; font-weight: 300; font-style: normal;">
           <tr>
-            <th scope="col" class="col-lg-3">Image</th>
             <th scope="col" class="col-lg-3">Room no</th>
-            <th scope="col" class="col-lg-5">Room type</th>
+            <th scope="col" class="col-lg-3">Room type</th>
+            <th scope="col" class="col-lg-5">Room view</th>
             <th scope="col" class="col-lg-12">Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <?php
+            $conn = new mysqli("localhost","root","","hurghada_db");
+            if (!$conn){
+              die("Connection Failed: " . mysqli_connect_error());
+            }
+            echo'<div class="alert alert-success alert-dismissible fade show">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Success!</strong> Connected with database successfully.
+            </div> ';
+            $query = "SELECT room_id,room_type,room_view  FROM rooms ";
+            $result = $conn->query($query);
+            if (!$result) {
+            die ("Fatal Query error");
+            }
+            echo'<div class="alert alert-success alert-dismissible fade show">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Success!</strong> Query done successfully.
+            </div>';
+            $rows = $result->num_rows;
+            for ($j=0; $j < $rows; $j++) {
+              /*$row['room_id'].*/
+              $row = $result->fetch_array(MYSQLI_ASSOC);
+              echo "<tr><td> ".$row['room_id']."</td> <td> ".$row['room_type']."</td><td>".$row['room_view']." </td>";
+              echo "<td>
+              <div class='row'>
+               <div class='col-1'>
+              <a href='#' title=''><img src='../assets/img/ic_border_color_24px.svg' class='img-responsive iconn2'></a>
+               </div>
+               <div class='col-1'>
+               <a href='#' title=''><img src='../assets/img/ic_delete_24px.svg' class='img-responsive iconn3'></a>
+               </div>
+              </td>";
+              echo "</tr>";
+              }
+          ?>
+         <!----- <tr>
             <th scope="row"></th>
-            <td>.</td>
+            <td></td>
             <td></td>
             <td>
               <div class="row ">
@@ -206,7 +242,7 @@
                   <a href="#" title=""><img src="../assets/img/ic_delete_24px.svg" class="img-responsive iconn3"></a>
                 </div>
             </td>
-          </tr>
+          </tr>---------->
         </tbody>
       </table>
     </div>
@@ -241,7 +277,7 @@
       <td>@mdo</td>
       <td> <div class="btn btn-primary btn-sm">Accept</div></td>
       
-      <td> <div class="btn btn-danger btn-sm px-3">reject</div></td>
+      <td> <div class="btn btn-danger btn-sm px-3">Reject</div></td>
     </tr>
     <tr>
       <th scope="row">2</th>
@@ -250,7 +286,7 @@
       <td>@fat</td>
       <td> <div class="btn btn-primary btn-sm">Accept</div></td>
       
-      <td> <div class="btn btn-danger btn-sm px-3">reject</div></td>
+      <td> <div class="btn btn-danger btn-sm px-3">Reject</div></td>
     </tr>
     <tr>
       <th scope="row">3</th>
@@ -258,7 +294,7 @@
       <td>@twitter</td>
       <td> <div class="btn btn-primary btn-sm">Accept</div></td>
       
-      <td> <div class="btn btn-danger btn-sm px-3">reject</div></td>
+      <td> <div class="btn btn-danger btn-sm px-3">Reject</div></td>
     </tr>
   </tbody>
 </table>
@@ -273,7 +309,7 @@
       </div>
     </div>
     <!------------------------------Modal end----------------------------->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
 </body>
 
 </html>
