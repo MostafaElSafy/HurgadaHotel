@@ -16,6 +16,7 @@
 </head>
 
 <body>
+  <!--Hanshilha lama mostafa yazbot-->
   <header class="navbar navbar-light   sticky-top flex-md-nowrap p-0 shadow ">
 
     <span class="navbar-brand mb-0 h1 col-md-3 col-lg-2 me-0 px-5">Profile</span>
@@ -60,7 +61,7 @@
 
   <main class="col-sm-3  col-sm-12 px-sm-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-wrap align-items-center pt-3 pb-2 mb-3 border-bottom ">
-
+<!---pt:padding top, pb:padding bottom-->
     
 
 
@@ -108,7 +109,7 @@
 
 
 
-      <div class="btn-group me-2">
+      <div>
         <button type="button" class="btn btn-secondary btn-sm px-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <img src="../assets/img/ic_add_box_24px.png" style=" margin:4px ;" alt="">
           Add
@@ -121,7 +122,7 @@
     </div>
     
     <div class="pos">
-      <table class="table table-responsive table-bordered ">
+      <table class="table table-responsive table-bordered">
         <thead style="background-color: #caf0f8; color: #707070; font-weight: 300; font-style: normal;">
           <tr>
             <th scope="col" class="col-lg-3">Image</th>
