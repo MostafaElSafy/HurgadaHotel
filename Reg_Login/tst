@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 include("../db_connect.php");
@@ -9,34 +8,37 @@ include("../functions.php");
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     //something was posted
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $pass = $_POST['password'];
 
-    if (!empty($email) && !empty($password) && !is_numeric($email)) {
+
+    if (!empty($email) && !empty($password)) {
 
         //read from database
+
         $query = "select * from guest where email = '$email' limit 1";
         $result = mysqli_query($conn, $query);
 
         if ($result) {
+
+
             if ($result && mysqli_num_rows($result) > 0) {
 
                 $user_data = mysqli_fetch_assoc($result);
 
-                if ($user_data['password'] === $password) {
+                if ($user_data['password'] === $pass) {
 
-                    $_SESSION['user_id'] = $user_data['user_id'];
+                    $_SESSION['guest_id'] = $user_data['guest_id'];
                     header("Location: reservation.php");
                     die;
                 }
             }
         }
-
-
+        echo "wrong username or password!";
     } else {
-        $logerr = " ";
+
+        echo "wrong username or password!";
     }
 }
-
 ?>
 
 
@@ -148,13 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                             <div class="mb-5">
                                 <label for="exampleInputPassword1" class="form-label small">Password</label>
-                                <input type="password" name="password" class="form-control" id="exampleInputPassword1"
-                                pattern=“(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}”
-                                title=“Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters
-
-                                >
-
-
+                                <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                             </div>
 
 
@@ -175,7 +171,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 </div>
 
                             </div>
-                    </div>
+                     </div>
 
 
                     </form>
@@ -204,6 +200,35 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 
 </html>
+
+<!-- <div id="box">
+
+		<form method="post">
+			<div style="font-size: 20px;margin: 10px;color: white;">Login</div>
+
+			<input id="text" type="text" name="email"><br><br>
+			<input id="text" type="password" name="password"><br><br>
+
+			<input id="button" type="submit" value="Login"><br><br>
+
+			<a href="index.php">Click to Signup</a><br><br>
+		</form>
+	</div> -->
