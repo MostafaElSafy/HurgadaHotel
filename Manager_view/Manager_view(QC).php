@@ -49,8 +49,9 @@ function closeNav() {
 
 <style>
 div {
-  border: 1px solid #ade8f4;
-  padding: 8px;
+  border: 4px solid #ade8f4;
+  padding: 200px;
+  
 }
 
 h1 {
