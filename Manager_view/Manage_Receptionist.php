@@ -17,38 +17,34 @@
     <link rel="stylesheet" href="../assets/css/MainStyles.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="Manager_styles.css">
+    <link rel="stylesheet" type="text/css" href="navigation.css">
 
 </head>
 
 
 <body>
 
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="Manager_view(QC).php">Home</a>
-        <a href="Manage_Rooms.php">Manage Rooms</a>
-        <a href="Manage_Receptionist.php">Manage Receptionist</a>
-        <a href="Manage_request.php">Manage Request</a>
-    </div>
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+  <a href="Manager_view(QC).php">Home</a>
+    <a href="Manage_Rooms.php">Manage Rooms</a>
+    <a href="Manage_Receptionist.php">Manage Receptionist</a>
+    <a href="Manage_request.php">Manage Request</a>
+  </div>
+</div>
 
-    <div id="main">
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
 
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-    </div>
+<script>
+function openNav() {
+  document.getElementById("myNav").style.display = "block";
+}
 
-    <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("main").style.marginLeft = "250px";
-            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("main").style.marginLeft = "0";
-            document.body.style.backgroundColor = "white";
-        }
-    </script>
+function closeNav() {
+  document.getElementById("myNav").style.display = "none";
+}
+</script>
 </body>
 
 </html>

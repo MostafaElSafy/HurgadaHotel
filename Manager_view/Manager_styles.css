@@ -1,124 +1,31 @@
 
-  /* Position the navbar container inside the image */
-  .container {
-    position: absolute;
-    margin: 20px;
-    width: auto;
-  }
-/* The side navigation menu */
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #03045e;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-  }
-  
-  .sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color:  antiquewhite;
-    display: block;
-    transition: 0.3s;
-  }
-  
-  .sidenav a:hover {
-    color: #00b4d8;
-  }
-  .sidenav a:active {
-      color: rgb(81, 55, 159);
-  }
-  
-  .sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-  }
-  
-  #main {
-    transition: margin-left .5s;
-    padding: 16px;
-  }
-  
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-  }
-  .container {
-    position: relative;
-  }
 
   /*//////////////////////////////////////////////////*/
 
-/*Backkground image*/
-
-body, html {
-  height: 100%;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.bg-image {
-  /* The image used */
-  background-image: url("registerBg.jpg");
-
-  /* Add the blur effect */
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
-
-  /* Full height */
-  height: 100%;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
 /* Position text in the middle of the page/image */
-.bg-text {
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
-  color: white;
-  font-weight: bold;
-  border: 3px solid #f1f1f1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  width: 60%;
-  padding: 20px;
-  text-align: center;
-}
+
 
 /** Tabs **/
+
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
+  text-align: center;
 
 }
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
-  background-color: inherit;
+  /*background-color: inherit;*/
   float: left;
   border: none;
   outline: none;
   cursor: pointer;
   padding: 14px 70px;
   transition: 0.3s;
+  text-align: center;
 }
 
 /* Change background color of buttons on hover */
@@ -137,6 +44,7 @@ body, html {
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+  text-align: center;
 }
 
 /*chart style */
@@ -144,40 +52,55 @@ body, html {
 .chart{
   color: antiquewhite;
   border: solid thin silver;
-  width: 450px;
-  height: 300px;
-  padding: 10px;
-  background-color: #FAFAD2;
-  }
-  #myInput {
-    background-image: url('searchh.jpg'); /* Add a search icon to input */
-    background-size: 20px 30px;
-   background-position: left top;
-    background-position: 10px 12px; /* Position the search icon */
-    background-repeat: no-repeat; /* Do not repeat the icon image */
-    width: 100%; /* Full-width */
-    font-size: 16px; /* Increase font-size */
-    padding: 12px 20px 12px 40px; /* Add some padding */
-    border: 1px solid #ddd; /* Add a grey border */
-    margin-bottom: 12px; /* Add some space below the input */
-  }
   
-#myTable {
+  width: 50px;
+  height: 100px;
+  padding: 10px;
+  }
+
+/* Table Search styles*/
+
+* {
+  box-sizing: border-box;
+}
+
+.myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+.myTable {
   border-collapse: collapse;
   width: 100%;
   border: 1px solid #ddd;
   font-size: 18px;
+  background-color: white;
+  color:black;
 }
 
-#myTable th, #myTable td {
+.myTable th, .myTable td {
   text-align: left;
   padding: 12px;
 }
 
-#myTable tr {
+.myTable tr {
   border-bottom: 1px solid #ddd;
 }
 
-#myTable tr.header, #myTable tr:hover {
-  background-color: #f1f1f1;
+div.pos
+{
+    width:95%;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%,-50%);
 }
+
+
+
