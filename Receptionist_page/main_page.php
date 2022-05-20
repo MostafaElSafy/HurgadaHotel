@@ -141,7 +141,7 @@
             echo'<div class="alert alert-success alert-dismissible fade show">
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             <strong>Success!</strong> Connected with database successfully.
-            </div> ';
+            </div>';
             $query = "SELECT room_id,room_type,room_view  FROM rooms ";
             $result = $conn->query($query);
             if (!$result) {
@@ -159,11 +159,12 @@
               echo "<td>
               <div class='row'>
                <div class='col-1'>
-              <a href='#' title=''><img src='../assets/img/ic_border_color_24px.svg' class='img-responsive iconn2'></a>
+              <a data-bs-toggle='modal' data-bs-target='#exampleModal2'><img src='../assets/img/ic_border_color_24px.svg' class='img-responsive iconn2'></a>
                </div>
                <div class='col-1'>
                <a href='#' title=''><img src='../assets/img/ic_delete_24px.svg' class='img-responsive iconn3'></a>
                </div>
+
               </td>";
               echo "</tr>";
               }
@@ -249,7 +250,7 @@
     <!-- Button trigger modal -->
 
 
-    <!----------------------------------------- Modal------------------------->
+    <!----------------------------------------- Modal ------------------------->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -308,7 +309,66 @@
         </div>
       </div>
     </div>
+    <!------------------------------ Modal end ----------------------------->
+
+    <!----------------------------------------- Modal icon edit ------------------------->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title " style="color: #2470dc;" id="exampleModalLabel">Room Edit</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container vw-75">
+            <form method="POST">
+              <div class="row">
+                <div class="col">
+                <label class="form-label">Room number:</label>
+                <input type="text" class="form-control" value="<?php echo $row['room_id'];  ?>">
+                </div>
+                <div class="col">
+                <label class="form-label">Stay duration:</label>
+                <input type="text" class="form-control" value="<?php echo $row['stay_duration'];  ?>">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                <label class="form-label">Occupied/Booked:</label>
+                <div>
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">Empty</label>
+                </div>
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">Booked</label>
+                </div>
+                <div class="col">
+                <label class="form-label">Price:</label>
+                <input type="text" class="form-control" value="<?php echo $row['price'];  ?>">
+                </div>
+              </div>  
+              <div class="row">
+                <div class="col">
+                <label class="form-label">Room Type:</label>
+                <input type="text" class="form-control" value="<?php echo $row['room_type'];  ?>">
+                </div>
+                <div class="col">
+                <label class="form-label">Room view:</label>
+                <input type="text" class="form-control" value="<?php echo $row['room_view'];  ?>">
+                </div>
+              </div>  
+            </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary">Save </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!------------------------------Modal end----------------------------->
+    
     
 </body>
 
