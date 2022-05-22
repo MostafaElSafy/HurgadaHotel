@@ -43,30 +43,15 @@ function closeNav() {
   document.getElementById("myNav").style.display = "none";
 }
 </script>
-<!-- ADD Button Creation-->
-<div> 
-        <button type="button" class="btn btn-secondary btn-sm px-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        <img src="../assets/img/ic_add_box_24px.png" style=" margin:4px ;" alt=" ">
-          Requests waiting to Accept 
-        </button>
-</div>
-
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-        <!-- Using class "modal-dialog modal-lg " to show the table in large sizing-->
-        <div class="modal-dialog modal-fullscreen"> 
-          
-        <div class="modal-content">  <!--content of the model-->
-          <div class="modal-header">
-            <h5 class="modal-title " style="color: #2470dc;" id="exampleModalLabel"> Requests from Clients </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="container vw-75">
-
-  <table class="table">
-  <thead>
-    <tr>
+<style>
+  .header
+  {
+   background-color: aquamarine;
+  }
+  </style>
+<table class="table table-striped table-hover">
+<tr >
+  <thead class="header">
       <th scope="col"></th>
       <th scope="col"> First Name</th>
       <th scope="col"> Last Name</th>
@@ -79,7 +64,6 @@ function closeNav() {
       <th scope="col"> Nationality </th>
       <th scope="col"> Accept </th>
       <th scope="col"> Reject </th>
-
       <th scope="col">  </th>
     </tr>
   </thead>
@@ -130,18 +114,16 @@ function closeNav() {
       <td><div class="btn btn-primary btn-sm">Accept</div></td>
      <td><div class="btn btn-danger btn-sm px-3">Reject</div></td>
     </tr>
-  
-     
   </tbody>
-  
 </table>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
             <button type="button" class="btn btn-primary">Save </button>
           </div>
-        </div>
-      </div>
-    </div>
 </body>
 </html>
 
+
+
+  
