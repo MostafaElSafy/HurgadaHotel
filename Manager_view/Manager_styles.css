@@ -146,5 +146,23 @@
 #myTable tr.header, #myTable tr:hover {
   background-color: #f1f1f1;
 }*/
+/* unvisited link */
+a:link {
+  color: green;
+}
 
+/* visited link */
+a:visited {
+  color: green;
+}
+
+/* mouse over link */
+a:hover {
+  color: red;
+}
+
+/* selected link */
+a:active {
+  color: yellow;
+}
 

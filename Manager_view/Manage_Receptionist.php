@@ -18,7 +18,10 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="Manager_styles.css">
     <link rel="stylesheet" type="text/css" href="navigation.css">
-
+    
+    <?php
+ include 'Manager_view(QC).php';
+?>
 </head>
 
 

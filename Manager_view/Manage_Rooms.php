@@ -16,6 +16,9 @@
   <link rel="stylesheet" type="text/css" href="Manager_styles.css">
   <link rel="stylesheet" href="../assets/css/MainStyles.css">
   <link rel="stylesheet" href="Manager_styles.css">
+  <?php
+ include 'Manager_view(QC).php';
+?>
 
   <script>
       function openTable(evt, Table) {
