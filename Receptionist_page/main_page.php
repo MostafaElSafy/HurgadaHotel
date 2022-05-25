@@ -13,7 +13,8 @@
   <link rel="stylesheet" href="../assets/css/MainStyles.css">
   <link rel="stylesheet" href="style_receptionist.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
+  <!--Ajax-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -67,72 +68,62 @@
 
 
 
-      <div class="row">
-
+      <div class="row">        
         <div class="col-auto">
-          <div class="label" style="color:#0096c7;"> Filter By date:</div>
+           <div class="label" style="color:#0096c7;"> Search: </div>
         </div>
-
         <div class="col">
-          <input class="form-control" type="text" name="demo2" class="calinput" />
-
+            <input class="form-control" type="text" name="demo2" id="myInput" class="calinput" />
         </div>
-
-        <div class="col">
-          <div>
-            <select class="form-select">
-              <option selected>Status</option>
-              <option value="1">Booked</option>
-              <option value="2">Empty</option>
-            </select>
-          </div>
-        </div>
-
-
-
-        <div class="col">
-
-          <button type="button" class="btn btn-secondary btn-sm mx-1  px-2 ">
-            <img src="../assets/img/search.svg" alt="">
-          </button>
-        </div>
-
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-      <div>
+       </div>
+      <script>
+        $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1) //search 3la el satr dah
+        });
+      });
+     });
+    </script>
+        <div>
         <button type="button" class="btn btn-secondary btn-sm px-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <img src="../assets/img/ic_add_box_24px.png" style=" margin:4px ;" alt="">
           Add
         </button>
       </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+      
 
 
 
 
     </div>
     
-    <div class="pos">
+   <div class="pos">
       <table class="table table-responsive table-bordered">
         <thead style="background-color: #caf0f8; color: #707070; font-weight: 300; font-style: normal;">
           <tr>
             <th scope="col" class="col-lg-3">Room no</th>
             <th scope="col" class="col-lg-3">Room type</th>
-            <th scope="col" class="col-lg-5">Room view</th>
+            <th scope="col" class="col-lg-3">Room view</th>
+            <th scope='col' class='col-lg-3'>Occupied</th>
             <th scope="col" class="col-lg-12">Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="myTable">
           <?php
             $conn = new mysqli("localhost","root","","hurghada_db");
             if (!$conn){
@@ -142,7 +133,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             <strong>Success!</strong> Connected with database successfully.
             </div>';
-            $query = "SELECT room_id,room_type,room_view  FROM rooms ";
+            $query = "SELECT room_id,room_type,room_view,occupied  FROM rooms ";
             $result = $conn->query($query);
             if (!$result) {
             die ("Fatal Query error");
@@ -152,14 +143,14 @@
             <strong>Success!</strong> Query done successfully.
             </div>';
             $rows = $result->num_rows;
+            
             for ($j=0; $j < $rows; $j++) {
-              /*$row['room_id'].*/
               $row = $result->fetch_array(MYSQLI_ASSOC);
-              echo "<tr><td> ".$row['room_id']."</td> <td> ".$row['room_type']."</td><td>".$row['room_view']." </td>";
+              echo "<tr><td> ".$row['room_id']."</td> <td> ".$row['room_type']."</td><td>".$row['room_view']." </td> <td> ".$row['occupied']."</td>";
               echo "<td>
               <div class='row'>
                <div class='col-1'>
-              <a data-bs-toggle='modal' data-bs-target='#exampleModal2'><img src='../assets/img/ic_border_color_24px.svg' class='img-responsive iconn2'></a>
+              <a data-bs-toggle='modal' id='editbtn' data-bs-target='#exampleModal2' onclick='UpdateDetails('.$row[room_id].')'><img src='../assets/img/ic_border_color_24px.svg' class='img-responsive iconn2'></a>
                </div>
                <div class='col-1'>
                <a href='#' title=''><img src='../assets/img/ic_delete_24px.svg' class='img-responsive iconn3'></a>
@@ -169,85 +160,9 @@
               echo "</tr>";
               }
           ?>
-         <!----- <tr>
-            <th scope="row"></th>
-            <td></td>
-            <td></td>
-            <td>
-              <div class="row ">
-                <div class="col-1">
-                  <a href="#" title=""><img src="../assets/img/ic_border_color_24px.svg" class="img-responsive iconn2"></a>
-
-                </div>
-                <div class="col-1">
-                  <a href="#" title=""><img src="../assets/img/ic_delete_24px.svg" class="img-responsive iconn3"></a>
-                </div>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <td>.</td>
-            <td></td>
-            <td>
-              <div class="row ">
-                <div class="col-1">
-                  <a href="#" title=""><img src="../assets/img/ic_border_color_24px.svg" class="img-responsive iconn2"></a>
-
-                </div>
-                <div class="col-1">
-                  <a href="#" title=""><img src="../assets/img/ic_delete_24px.svg" class="img-responsive iconn3"></a>
-                </div>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <td>.</td>
-            <td></td>
-            <td>
-              <div class="row ">
-                <div class="col-1">
-                  <a href="#" title=""><img src="../assets/img/ic_border_color_24px.svg" class="img-responsive iconn2"></a>
-
-                </div>
-                <div class="col-1">
-                  <a href="#" title=""><img src="../assets/img/ic_delete_24px.svg" class="img-responsive iconn3"></a>
-                </div>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <td>.</td>
-            <td></td>
-            <td>
-              <div class="row ">
-                <div class="col-1">
-                  <a href="#" title=""><img src="../assets/img/ic_border_color_24px.svg" class="img-responsive iconn2"></a>
-
-                </div>
-                <div class="col-1">
-                  <a href="#" title=""><img src="../assets/img/ic_delete_24px.svg" class="img-responsive iconn3"></a>
-                </div>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <td>.</td>
-            <td></td>
-            <td>
-              <div class="row ">
-                <div class="col-1">
-                  <a href="#" title=""><img src="../assets/img/ic_border_color_24px.svg" class="img-responsive iconn2"></a>
-
-                </div>
-                <div class="col-1">
-                  <a href="#" title=""><img src="../assets/img/ic_delete_24px.svg" class="img-responsive iconn3"></a>
-                </div>
-            </td>
-          </tr>---------->
         </tbody>
       </table>
-    </div>
-    <!-- Button trigger modal -->
+    </div> 
 
 
     <!----------------------------------------- Modal ------------------------->
@@ -325,11 +240,11 @@
               <div class="row">
                 <div class="col">
                 <label class="form-label">Room number:</label>
-                <input type="text" class="form-control" value="<?php echo $row['room_id'];  ?>">
+                <input type="text" class="form-control" name="ID" value="<?php echo $row['room_id'];  ?>">
                 </div>
                 <div class="col">
                 <label class="form-label">Stay duration:</label>
-                <input type="text" class="form-control" value="<?php echo $row['stay_duration'];  ?>">
+                <input type="text" class="form-control" name="stay" value="<?php echo $row['stay_duration'];  ?>">
                 </div>
               </div>
               <div class="row">
@@ -344,17 +259,17 @@
                 </div>
                 <div class="col">
                 <label class="form-label">Price:</label>
-                <input type="text" class="form-control" value="<?php echo $row['price'];  ?>">
+                <input type="text" class="form-control" name="price" value="<?php echo $row['price'];  ?>">
                 </div>
               </div>  
               <div class="row">
                 <div class="col">
                 <label class="form-label">Room Type:</label>
-                <input type="text" class="form-control" value="<?php echo $row['room_type'];  ?>">
+                <input type="text" class="form-control" name="type" value="<?php echo $row['room_type'];  ?>">
                 </div>
                 <div class="col">
                 <label class="form-label">Room view:</label>
-                <input type="text" class="form-control" value="<?php echo $row['room_view'];  ?>">
+                <input type="text" class="form-control" name="view" value="<?php echo $row['room_view'];  ?>">
                 </div>
               </div>  
             </form>
@@ -363,13 +278,14 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
             <button type="button" class="btn btn-primary">Save </button>
+            <input type="hidden" id="hiddendata">
           </div>
         </div>
       </div>
     </div>
-    <!------------------------------Modal end----------------------------->
-    
-    
+    <!------------------------------Modal end of the edit icon----------------------------->
+ 
+
 </body>
 
 </html>
