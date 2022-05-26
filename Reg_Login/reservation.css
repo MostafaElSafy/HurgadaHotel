@@ -1,0 +1,42 @@
+/* Navbar */
+.bg-primary
+{    background-color: #0096c7 !important;
+
+}
+
+h2
+{
+color:  #0077b6;
+font-size: x-large;
+}
+
+h5
+{
+color:  #0077b6;
+font-size: large;
+}
+
+
+label{
+    color: #0077b6;
+    font-weight: 600;
+    color: #1ea9f4;
+}
+
+textarea
+{
+    color: #707070;
+    border-width: 4px;
+    border-style: dashed;
+    border-color: #0077b6;
+}
+
+.backbutton
+{
+    margin-top: 10%;
+}
+
+.thead
+{
+    background-color: #caf0f8; color: #707070; font-weight: 300; font-style: normal;
+}
