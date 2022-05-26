@@ -20,16 +20,17 @@
 
 
   <?php
- include 'Manager_view(QC).php';
-?>
+  include 'NavBar.html';
+  ?>
 
 </head>
 <body>
 
-<style>
+<hr>
+<h4>Guests Requests</h4>
 
+<hr>
 
-  </style>
     <div class="tab-pane fade" id="nav-Request" role="tabpanel" aria-labelledby="nav-Request-tab"></div>
 <table class="table table-striped table-hover">
 <thead class="dark1">
