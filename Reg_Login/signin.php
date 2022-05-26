@@ -149,8 +149,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             <div class="mb-5">
                                 <label for="exampleInputPassword1" class="form-label small">Password</label>
                                 <input type="password" name="password" class="form-control" id="exampleInputPassword1"
-                                pattern=“(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}”
-                                title=“Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters
 
                                 >
 
