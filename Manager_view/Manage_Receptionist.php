@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<title> Manage Receptionist </title>
 
 <head>
 
@@ -19,172 +20,252 @@
     <link rel="stylesheet" href="Manager_styles.css">
     <link rel="stylesheet" type="text/css" href="navigation.css">
 
-</head>
+    <?php
+    include 'Manager_view(QC).php';
+    ?>
 
+</head>
 
 <body>
+    <!-- Inside the two bars -->
+    <hr>
 
-<div id="myNav" class="overlay">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <div class="overlay-content">
-  <a href="Manager_view(QC).php">Home</a>
-    <a href="Manage_Rooms.php">Manage Rooms</a>
-    <a href="Manage_Receptionist.php">Manage Receptionist</a>
-    <a href="Manage_request.php">Manage Request</a>
-  </div>
-</div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3> Manage Receptionist </h3>
 
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+                </div>
+                <!-- add sapce between the two buttons -->
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end col-md-4 ms-auto">
+                    <button type="button" class="btn btn-secondary btn-lg px-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <img src="../assets/img/ic_add_box_24px.png" style=" margin:2px ;" alt="">
+                        Create New User
 
-<script>
-function openNav() {
-  document.getElementById("myNav").style.display = "block";
-}
+                        <button type="button" class="btn btn-secondary btn-lg px-2" data-bs-toggle="modal1" data-bs-target="#Modal1">
+                            <img src="../assets/img/star-half.svg" style=" margin:4px ;" alt="">
+                            Receptionist Rating
+                        </button>
 
-function closeNav() {
-  document.getElementById("myNav").style.display = "none";
-}
-</script>
-<style>
-div {
-  border: 1px solid #ade8f4;
-  padding: 8px;
-  text-align: center;
-}
-
-h1 {
-  text-align: center;
-  text-transform: uppercase;
-  color: #023e8a;
-
-}
-
-p {
-  text-indent: 50px;
-  text-align: center;
-  letter-spacing: 3px;
-}
-
-a {
-  text-decoration: none;
-  color: #023e8a;
-  text-align: center;
-}
-
-</style>
-
-  <div>
-    <h1 style="color:black; text-align: center;"> Manage Receptionist </h1>
-  </div>
-    <!--<form method="POST" action="Manage_Receptionist.php">
-    Name: <input type="text" name="name">
-      <br>
-    Email : <input type="text" name="email">
-      <br>
-    Phone Number :<input type="text" name="phone number">
-     <br>
-     Address:<input type="text" name="address">
-     <br>
-    National ID:<input type="text" name="national id">
-     <br>
-    Gender: 
-<select gender="gender" name="gender">
-<option value="0" > Select your gender </option>
-<option value="1" > Male</option>
-<option value ="2" > Female</option>
-</select>
-<br>-->
-
-    <!-- Tab links for Tables -->
-    <div class="tab" style=" text-align: center;">
-      <button class="tablinks" onclick="openTable(event, 'C_Nuser')" >Create New Receptionist User</button>
-      <button class="tablinks" onclick="openTable(event, 'EnableDisable')">Enable and Disable Receptionist Accounts</button>
-      <button class="tablinks" onclick="openTable(event, 'Recep_Rating')">Show Receptionist Rating</button>
-    </div>
-
-     <!-- Button to create new user -->
-    <div id="C_Nuser" class="tabcontent">
-      <h3 style="color:#0077b6;">Create New Receptionist User</h3>
-
-<style>
-fieldset {
-  background-color: #eeeeee;
-}
-
-legend {
-  background-color:#ade8f4;
-  color: grey;
-  padding: 5px 10px;
-}
-
-input {
-  margin: 5px;
-}
-</style>
-</head>
-
-<form action="Manage_Receptionist.php">
- <fieldset>
-  <legend>Personalia:</legend>
-  <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname"><br><br>
-  <label for="lname">Last name:</label>
-  <input type="text" id="lname" name="lname"><br><br>
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email"><br><br>
-  <label for="birthday">Birthday:</label>
-  <input type="date" id="birthday" name="birthday"><br><br>
-  <label for="address">Address:</label>
-  <input type="address" id="address" name="address"><br><br>
-  <label for="National ID">National ID:</label>
-  <input type="National ID" id="National ID" name="National ID"><br><br>
-  Gender: 
-<select gender="gender" name="gender">
-<option value="0" > Select your gender </option>
-<option value="1" > Male</option>
-<option value ="2" > Female</option>
-</select>
-  
-  <input type="submit" value="Submit">
- </fieldset>
-</form>
-    </div>
-
-    <!-- Button to create enable and disable receprionist user -->
-    <div id="EnableDisable" class="tabcontent">
-      <h3 style="color:black;">Enable and Disable Receptionist Accounts</h3>
-    </div>
-
-    <!-- Button to show receprionist rating above 3.7 -->
-    <div id="Recep_Rating" class="tabcontent">
-      <h3 style="color:black;">Show Receptionist Rating</h3>
+                </div>
+            </div>
+        </div>
     </div>
 
 
-<!--//////////////// Open table function /////////////////////-->
 
-<script>
-      function openTable(evt, Table) {
-        // Declare all variables
-        var i, tabcontent, tablinks;
-
-        // Get all elements with class="tabcontent" and hide them
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
+    <hr>
+    <!--table data and table header are centred-->
+    <style>
+        .table td {
+            text-align: center;
         }
-
-        // Get all elements with class="tablinks" and remove the class "active"
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" active", "");
+    </style>
+    <style>
+        .table th {
+            text-align: center;
         }
+    </style>
 
-        // Show the current tab, and add an "active" class to the button that opened the tab
-        document.getElementById(Table).style.display = "block";
-        evt.currentTarget.className += " active";
-      }
-    </script>
+    <div class="tab-pane fade" id="nav-Request" role="tabpanel" aria-labelledby="nav-Request-tab"></div>
+    <table class="table table-striped table-hover">
+        <thead class="dark1">
+            <tr>
+                <th scope="col"></th>
+                <th scope="col"> Receptionist ID</th>
+                <th scope="col"> First Name</th>
+                <th scope="col"> Last Name</th>
+                <th scope="col"> Username </th>
+                <th scope="col"> Password</th>
+                <th scope="col">Email</th>
+                <th scope="col"> Date of birth</th>
+                <th scope="col"> Phone Number </th>
+                <th scope="col"> Address </th>
+                <th scope="col"> National ID</th>
+                <th scope="col"> Action </th>
+                <th scope="col"> Add Comments </th>
 
+                <th scope="col"> </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <th scope="row"> 1 </th>
+                <td>0001</td>
+                <td>Sandra </td>
+                <td>Alex</td>
+                <td>sandra_alex</td>
+                <td>123</td>
+                <td>@sandraalex</td>
+                <td>5/2/1999</td>
+                <td>01125111</td>
+                <td>refaat st</td>
+                <td>2625462845</td>
+                <td>
+                    <div class="btn btn-primary btn-sm">Enable</div>
+                    <div class="btn btn-danger btn-sm px-3">Disbale</div>
+                    <a href='#' title=''><img src='../assets/img/trash-fill.svg' class='img-responsive iconn3'></a>
+                    <a href='#' title=''><img src='../assets/img/pencil.svg' class='img-responsive iconn3'></a>
+                </td>
+
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>0002</td>
+                <td>Aline </td>
+                <td>Jason</td>
+                <td>aline_jason</td>
+                <td>264</td>
+                <td>@alinejason</td>
+                <td>5/9/1999</td>
+                <td>01126511</td>
+                <td>youssef sebaie st</td>
+                <td>2622965445</td>
+                <td>
+                    <div class="btn btn-primary btn-sm">Enable</div>
+                    <div class="btn btn-danger btn-sm px-3">Disable</div>
+                    <a href='#' title=''><img src='../assets/img/trash-fill.svg' class='img-responsive iconn3'></a>
+                    <a href='#' title=''><img src='../assets/img/pencil.svg' class='img-responsive iconn3'></a>
+                </td>
+
+
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>0003</td>
+                <td>Youssef </td>
+                <td> Samy </td>
+                <td>youssef_samy</td>
+                <td>289</td>
+                <td>@youssefsamy</td>
+                <td>11/10/1998</td>
+                <td>01126511</td>
+                <td> ahmed azmy st</td>
+                <td>2681965547</td>
+                <td>
+                    <div class="btn btn-primary btn-sm">Enable</div>
+                    <div class="btn btn-danger btn-sm px-3">Disbale</div>
+                    <a href='#' title=''><img src='../assets/img/trash-fill.svg' class='img-responsive iconn3'></a>
+                    <a href='#' title=''><img src='../assets/img/pencil.svg' class='img-responsive iconn3'></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary"> Save </button>
+    </div>
+
+
+
+
+    <!--Create New User Form-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title " style="color: #2470dc;" id="exampleModalLabel">Create New User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container vw-75">
+
+                        <form class="was-validated">
+
+                            <div class="mb-3">
+                                Receptionist ID <input type="text" class="form-control" placeholder="Receptionist ID" name="recepID" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col">
+                                    First Name <input type="text" class="form-control" placeholder="First name" name="fname" required>
+                                    <div class="valid-feedback">Valid.</div>
+                                    <div class="invalid-feedback">Please fill out this field.</div>
+                                </div>
+
+                                <div class="col">
+                                    Last Name <input type="text" class="form-control" placeholder="Last name" name="lname" required>
+                                    <div class="valid-feedback">Valid.</div>
+                                    <div class="invalid-feedback">Please fill out this field.</div>
+                                </div>
+
+                                <div class="col">
+                                    Username <input type="text" class="form-control" placeholder="Username" name="uname" required>
+                                    <div class="valid-feedback">Valid.</div>
+                                    <div class="invalid-feedback">Please fill out this field.</div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row g-3">
+                                <div class="col">
+                                    Password <input type="password" class="form-control" placeholder="password" name="password" required>
+                                    <div class="valid-feedback">Valid.</div>
+                                    <div class="invalid-feedback">Please fill out this field.</div>
+                                </div>
+                                <div class="col">
+                                    Email <input type="email" class="form-control" placeholder="email" name="email" required>
+                                    <div class="valid-feedback">Valid.</div>
+                                    <div class="invalid-feedback">Please fill out this field.</div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="mb-3">
+                                Date of birth <input type="date" class="form-control" placeholder="Date of birth" name="dateofbirth" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                Phone Number <input type="text" class="form-control" placeholder="Phone Number" name="phonenumber" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                Address <input type="text" class="form-control" placeholder="Address" name="address" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+
+                    <div class="mb-3">
+                        National ID <input type="text" class="form-control" placeholder="National ID" name="nationalid" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col">
+                            Role: <select class="form-select is-invalid" id="autoSizingSelect" name="role" required >
+                                <option selected disabled value>Choose...</option>
+                                <option value="0">Choose Manager or Receptionist</option>
+                                <option value="1">Manager</option>
+                                <option value="2">Receptionist</option>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+
+                            </select>
+
+                            <div class="col">
+                                Comments <input type="comments" class="form-control" placeholder="comments" name="comments" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save </button>
+                </div>
+            </div>
+        </div>
 </body>
+
 </html>
