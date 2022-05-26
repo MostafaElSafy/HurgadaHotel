@@ -21,17 +21,14 @@
     <link rel="stylesheet" type="text/css" href="navigation.css">
 
     <?php
-    include 'Manager_view(QC).php';
-    ?>
+  include 'NavBar.html';
+  ?>
 
 
 </head>
 
 <body>
-<<<<<<< HEAD
 
-
-=======
     <!-- Inside the two bars -->
     <hr>
 
