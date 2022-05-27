@@ -21,12 +21,14 @@
     <link rel="stylesheet" type="text/css" href="navigation.css">
 
     <?php
-    include 'Manager_view(QC).php';
-    ?>
+  include 'NavBar.html';
+  ?>
+
 
 </head>
 
 <body>
+
     <!-- Inside the two bars -->
     <hr>
 
@@ -266,6 +268,7 @@
                 </div>
             </div>
         </div>
+>>>>>>> c5eeb9856642019dc48b749ae54fe60120221377
 </body>
 
 </html>

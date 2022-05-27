@@ -19,28 +19,37 @@
     <link rel="stylesheet" type="text/css" href="Manager_styles.css">
 
     <!--Navigation Bar-->
- 
+    <?php
+  include 'NavBar.html';
+  ?>
+
 </head>
 <body>
 
 
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-  <div class="container-fluid">
-    <ul class="navbar-nav">
-      <li class="nav-item" >
-        <a class="nav-link"  href="Manager_view(QC).php">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="Manage_Rooms.php">Manage Rooms</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="Manage_Receptionist.php">Manage Receptionist</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link"href="Manage_Request.php">Manage Request</a>
-      </li>
-    </ul>
-  </div>
-</nav>
 
+<hr>
+
+
+<div class="container">
+        <div class="row justify-content-md-center">
+            <div class="mbr-white col-md-10">
+                <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-1">Welcome to Manager View!</h1>
+                </div>
+                </div>
+                     
+        </div>
+                <hr>
+                <p class="row justify-content-md-center"class="mbr-text align-center pb-3 mbr-fonts-style display-6">
+                    Manager Name:
+                    <br>
+                    Manager ID:
+                  </p>
+               
+                      
+                    
+       
+    </div>
+    
 </body>
+</html>
