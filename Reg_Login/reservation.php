@@ -22,7 +22,7 @@ include("../functions.php");
     <link rel="stylesheet" href="reservation.css">
 </head>
 
-<body>
+<body class="bg-light">
 
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -153,7 +153,7 @@ include("../functions.php");
 
                             $row = $result->fetch_array(MYSQLI_ASSOC);
                             echo "<tr> <td> " . $row['room_id'] . "</td> <td> " . $row['room_type'] . "</td><td>" . $row['room_view'] . " </td> <td>" . $row['price']
-                              . "</td><td>" . $row['max'] . " </td>" . "<td>  <a class='btn btn-outline-primary' href='IDimg.php' role='button'>Reserve</a> </td>";
+                              . "</td><td>" . $row['max'] . " </td>" . "<td>  <a class='btn btn-outline-primary' href='img.php' role='button'>Reserve</a> </td>";
                         }
                         ?>
                     </tbody>
