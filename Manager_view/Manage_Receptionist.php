@@ -22,8 +22,8 @@
     <link rel="stylesheet" type="text/css" href="navBar.css">
 
     <?php
-  include 'NavBar.html';
-  ?>
+    include 'NavBar.html';
+    ?>
 
 
 </head>
@@ -46,10 +46,7 @@
                         <img src="../assets/img/ic_add_box_24px.png" style=" margin:2px ;" alt="">
                         Create New User
 
-                        <button type="button" class="btn btn-secondary btn-lg px-2" data-bs-toggle="modal1" data-bs-target="#Modal1">
-                            <img src="../assets/img/star-half.svg" style=" margin:4px ;" alt="">
-                            Receptionist Rating
-                        </button>
+
 
                 </div>
             </div>
@@ -107,12 +104,42 @@
                 <td>refaat st</td>
                 <td>2625462845</td>
                 <td>
-                    <div class="btn btn-primary btn-sm">Enable</div>
-                    <div class="btn btn-danger btn-sm px-3">Disbale</div>
-                    <a href='#' title=''><img src='../assets/img/trash-fill.svg' class='img-responsive iconn3'></a>
-                    <a href='#' title=''><img src='../assets/img/pencil.svg' class='img-responsive iconn3'></a>
-                </td>
+                    <div class="btn btn-primary btn-sm px-1" id="e">Enable</div>
 
+
+                    <script>
+                         element = document.getElementById('e')
+                        // always checking if the element is clicked, if so, do alert('hello')
+                        element.addEventListener("click", () => {
+                            alert('Please Add Comments ');
+                        });
+
+                    </script>
+
+                    <div class="btn btn-danger btn-sm px-1" id="d">Disable</div>
+                    <script>
+                         element = document.getElementById('d')
+                        element.addEventListener("click", () => {
+                            alert('bye');
+                        });
+                    </script>
+                
+                   <!-- <a href='#' title=''><img src='../assets/img/trash-fill.svg' class='img-responsive iconn3'></a>-->
+                   <!-- <a href='#' title=''><img src='../assets/img/pencil.svg' class='img-responsive iconn3'></a>-->
+
+                    <button class="btn" style="width:2px hight=2px;">
+                    <i class="fa fa-trash" style="font-size:17px;"></i>
+                    </button>
+                    <button class="btn" style="width:2px hight=2px;">
+                    <i class="fa fa-pencil" style="font-size:17px;"></i>
+                    </button>
+
+                <td>
+                    <form>
+                     
+                        <input type="com" id="textcom" name="text_name" style="width: 120px;" required>
+                    </form> 
+                </td>
             </tr>
             <tr>
                 <th scope="row">2</th>
@@ -126,12 +153,19 @@
                 <td>01126511</td>
                 <td>youssef sebaie st</td>
                 <td>2622965445</td>
+
                 <td>
-                    <div class="btn btn-primary btn-sm">Enable</div>
-                    <div class="btn btn-danger btn-sm px-3">Disable</div>
-                    <a href='#' title=''><img src='../assets/img/trash-fill.svg' class='img-responsive iconn3'></a>
-                    <a href='#' title=''><img src='../assets/img/pencil.svg' class='img-responsive iconn3'></a>
+                    <div class="btn btn-primary btn-sm px-1">Enable</div>
+                    <div class="btn btn-danger btn-sm px-1">Disable</div>
+                    <button class="btn" style="width:2px hight=2px;">
+                    <i class="fa fa-trash" style="font-size:17px;"></i>
+                    </button>
+                    <button class="btn" style="width:2px hight=2px;">
+                    <i class="fa fa-pencil" style="font-size:17px;"></i>
+                    </button>
                 </td>
+                <td> <input type="com" id="textcom" name="text_name" style="width: 120px;" /> </td>
+
 
 
             </tr>
@@ -148,19 +182,24 @@
                 <td> ahmed azmy st</td>
                 <td>2681965547</td>
                 <td>
-                    <div class="btn btn-primary btn-sm">Enable</div>
-                    <div class="btn btn-danger btn-sm px-3">Disbale</div>
-                    <a href='#' title=''><img src='../assets/img/trash-fill.svg' class='img-responsive iconn3'></a>
-                    <a href='#' title=''><img src='../assets/img/pencil.svg' class='img-responsive iconn3'></a>
+                    <div class="btn btn-primary btn-sm px-1">Enable</div>
+                    <div class="btn btn-danger btn-sm px-1">Disable</div>
+                    <button class="btn" style="width:2px hight=2px;">
+                    <i class="fa fa-trash" style="font-size:17px;"></i>
+                    </button>
+                    <button class="btn" style="width:2px hight=2px;">
+                    <i class="fa fa-pencil" style="font-size:17px;"></i>
+                    </button>
                 </td>
+                <td> <input type="com" id="textcom" name="text_name" style="width: 120px;" /> </td>
+
             </tr>
         </tbody>
     </table>
+    
+    </form>
 
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary"> Save </button>
-    </div>
+
 
 
 
@@ -235,32 +274,32 @@
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
 
-                    <div class="mb-3">
-                        National ID <input type="text" class="form-control" placeholder="National ID" name="nationalid" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
-
-                    <div class="row g-3">
-                        <div class="col">
-                            Role: <select class="form-select is-invalid" id="autoSizingSelect" name="role" required >
-                                <option selected disabled value>Choose...</option>
-                                <option value="0">Choose Manager or Receptionist</option>
-                                <option value="1">Manager</option>
-                                <option value="2">Receptionist</option>
-                                <div class="valid-feedback">Valid.</div>
-                                <div class="invalid-feedback">Please fill out this field.</div>
-
-                            </select>
-
-                            <div class="col">
-                                Comments <input type="comments" class="form-control" placeholder="comments" name="comments" required>
+                            <div class="mb-3">
+                                National ID <input type="text" class="form-control" placeholder="National ID" name="nationalid" required>
                                 <div class="valid-feedback">Valid.</div>
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
-                        </div>
+
+                            <div class="row g-3">
+                                <div class="col">
+                                    Role: <select class="form-select is-invalid" id="autoSizingSelect" name="role" required>
+                                        <option selected disabled value>Choose...</option>
+                                        <option value="0">Choose Manager or Receptionist</option>
+                                        <option value="1">Manager</option>
+                                        <option value="2">Receptionist</option>
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
+
+                                    </select>
+
+                                    <div class="col">
+                                        Comments <input type="comments" class="form-control" placeholder="comments" name="comments" required>
+                                        <div class="valid-feedback">Valid.</div>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
-                </div>
                 </div>
 
                 <div class="modal-footer">
@@ -269,7 +308,6 @@
                 </div>
             </div>
         </div>
->>>>>>> c5eeb9856642019dc48b749ae54fe60120221377
 </body>
 
 </html>
