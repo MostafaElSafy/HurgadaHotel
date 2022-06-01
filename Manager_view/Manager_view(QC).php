@@ -1,9 +1,4 @@
-
-<?php
-session_start();
-include("../db_connect.php");
-include("../functions.php");
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>

@@ -1,8 +1,4 @@
-<?php
-session_start();
-include("../db_connect.php");
-include("../functions.php");
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <title> Manage Receptionist </title>
