@@ -131,19 +131,18 @@ include("../functions.php");
                    <!-- <a href='#' title=''><img src='../assets/img/trash-fill.svg' class='img-responsive iconn3'></a>-->
                    <!-- <a href='#' title=''><img src='../assets/img/pencil.svg' class='img-responsive iconn3'></a>-->
 
-                    <button class="btn" style="width:4px hight=5px;">
-                    <i class="fa fa-pencil" style="font-size:15px;"></i>
+                    <button class="btn" style="width:2px hight=2px;">
+                    <i class="fa fa-trash" style="font-size:17px;"></i>
                     </button>
-
-                    <button class="btn" style="width:4px hight=5px;">
-                    <i class="fa fa-trash" style="font-size:15px;"></i>
+                    <button class="btn" style="width:2px hight=2px;">
+                    <i class="fa fa-pencil" style="font-size:17px;"></i>
                     </button>
 
                 <td>
                     <form>
                      
                         <input type="com" id="textcom" name="text_name" style="width: 120px;" required>
-                        
+                    </form> 
                 </td>
             </tr>
             <tr>
@@ -162,8 +161,12 @@ include("../functions.php");
                 <td>
                     <div class="btn btn-primary btn-sm px-1">Enable</div>
                     <div class="btn btn-danger btn-sm px-1">Disable</div>
-                    <a href='#' title=''><img src='../assets/img/trash-fill.svg' class='img-responsive iconn3'></a>
-                    <a href='#' title=''><img src='../assets/img/pencil.svg' class='img-responsive iconn3'></a>
+                    <button class="btn" style="width:2px hight=2px;">
+                    <i class="fa fa-trash" style="font-size:17px;"></i>
+                    </button>
+                    <button class="btn" style="width:2px hight=2px;">
+                    <i class="fa fa-pencil" style="font-size:17px;"></i>
+                    </button>
                 </td>
                 <td> <input type="com" id="textcom" name="text_name" style="width: 120px;" /> </td>
 
@@ -185,8 +188,12 @@ include("../functions.php");
                 <td>
                     <div class="btn btn-primary btn-sm px-1">Enable</div>
                     <div class="btn btn-danger btn-sm px-1">Disable</div>
-                    <a href='#' title=''><img src='../assets/img/trash-fill.svg' class='img-responsive iconn3'></a>
-                    <a href='#' title=''><img src='../assets/img/pencil.svg' class='img-responsive iconn3'> </a>
+                    <button class="btn" style="width:2px hight=2px;">
+                    <i class="fa fa-trash" style="font-size:17px;"></i>
+                    </button>
+                    <button class="btn" style="width:2px hight=2px;">
+                    <i class="fa fa-pencil" style="font-size:17px;"></i>
+                    </button>
                 </td>
                 <td> <input type="com" id="textcom" name="text_name" style="width: 120px;" /> </td>
 
