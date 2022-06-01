@@ -1,3 +1,8 @@
+<?php
+session_start();
+include("../db_connect.php");
+include("../functions.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <title> Manage Receptionist </title>
@@ -18,7 +23,7 @@
     <link rel="stylesheet" href="../assets/css/MainStyles.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="Manager_styles.css">
-    <link rel="stylesheet" type="text/css" href="navigation.css">
+    <link rel="stylesheet" type="text/css" href="navBar.css">
 
     <?php
     include 'NavBar.html';

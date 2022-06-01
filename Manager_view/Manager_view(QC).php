@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+
+<?php
+session_start();
+include("../db_connect.php");
+include("../functions.php");
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -17,10 +22,12 @@
     <!-- Custom stlylesheet -->
     <link rel="stylesheet" href="../assets/css/MainStyles.css">
     <link rel="stylesheet" type="text/css" href="Manager_styles.css">
+    <link rel="stylesheet" type="text/css" href="navBar.css">
 
     <!--Navigation Bar-->
     <?php
   include 'NavBar.html';
+
   ?>
 
 </head>
@@ -40,10 +47,16 @@
                      
         </div>
                 <hr>
+                <?php
+                $sql = "SELECT firstname, lastname , qc_id FROM qualitycontrol";
+                    
+                      $result = $conn->query($sql);
+
+                      ?>
                 <p class="row justify-content-md-center"class="mbr-text align-center pb-3 mbr-fonts-style display-6">
-                    Manager Name:
+                    Manager Name: <?php echo $_POST['firstname']; ?><?php echo $_POST['lastname']; ?>
                     <br>
-                    Manager ID:
+                    Manager ID: <?php echo $_POST['qc_id']; ?>
                   </p>
                
                       
