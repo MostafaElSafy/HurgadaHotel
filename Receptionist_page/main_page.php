@@ -17,57 +17,55 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
-<body>
-  <!--Hanshilha lama mostafa yazbot-->
-  <header class="navbar navbar-light   sticky-top flex-md-nowrap p-0 shadow ">
 
-    <span class="navbar-brand mb-0 h1 col-md-3 col-lg-2 me-0 px-5">Profile</span>
-    <!---------toggle icon--->
-    <button class="navbar-toggler position-absolute d-md-none " id="sidebarMenu" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-
-
-    <div class="navbar-nav  ">
-      <div class="nav-item text-nowrap">
-        <div class="dropdown  px-5 profileb4 ">
-          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <!-- <img src="https://github.com/mdo.png" alt="" width="26" height="26" class="rounded-circle me-2">-->
-
-            <label style="color: #707070;"> Ahmed</label>
-          </a>
-          <ul class="dropdown-menu text-small shadow  " style="position: absolute; left: 10% ;" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item text-muted" href="#">Profile</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item text-muted" href="#">Sign out</a></li>
-          </ul>
+<!--Navigation bar at the top of the page-->
+<body class="bg-light">
+  <style>
+   .bg-primary
+    { background-color: #0096c7 !important;}
+  </style>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Hurghada Grand</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <!-- // lw 3ayzen tdefo 7aga 7toha ka LI hena -->
+                <ul class="navbar-nav me-auto  mb-lg-0">
+                    <li class="nav-item d-none">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    <a class="nav-link" href="logout.php">Logout</a>
+                </span>
+            </div>
         </div>
-      </div>
-    </div>
+    </nav>
 
   </header>
-
+</body>
+<!--End of navigation bar-->
 
 <body>
   
 <div class="row mt-4 mb-0 mx-4">
 
 <div class="col">
-  <h1 class="h3" style="color:#0096c7;"> Rooms</h1>
+  <h1 class="h3" style="color:#0096c7;"> Rooms </h1>
 </div>
 
 </div>
 
   <main class="col-sm-3  col-sm-12 px-sm-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-wrap align-items-center pt-3 pb-2 mb-3 border-bottom ">
-<!---pt:padding top, pb:padding bottom-->
+        <!---pt:padding top, pb:padding bottom-->
     
 
 
-
+<!--Search Bar that allows searching with any type of data and show only the matching data of what you've searched for in the table-->
       <div class="row">        
         <div class="col-auto">
            <div class="label" style="color:#0096c7;"> Search: </div>
@@ -76,6 +74,7 @@
             <input class="form-control" type="text" name="demo2" id="myInput" class="calinput" />
         </div>
        </div>
+<!--JAVASCRIPT Function for Search-->
       <script>
         $(document).ready(function(){
         $("#myInput").on("keyup", function() {
@@ -86,6 +85,7 @@
       });
      });
     </script>
+<!--Add button which allows the receptionist to add room requests-->
         <div>
         <button type="button" class="btn btn-secondary btn-sm px-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <img src="../assets/img/ic_add_box_24px.png" style=" margin:4px ;" alt="">
@@ -95,23 +95,8 @@
       </div>
 
 
-
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
     </div>
-    
+<!--The Table giving it the position in page provided in style_receptionist.css-->
    <div class="pos">
       <table class="table table-responsive table-bordered">
         <thead style="background-color: #caf0f8; color: #707070; font-weight: 300; font-style: normal;">
@@ -124,6 +109,7 @@
           </tr>
         </thead>
         <tbody id="myTable">
+         <!--Connecting the table that appears to the receptionist with the database-->
           <?php
             $conn = new mysqli("localhost","root","","hurghada_db");
             if (!$conn){
@@ -164,8 +150,7 @@
       </table>
     </div> 
 
-
-    <!----------------------------------------- Modal ------------------------->
+<!-- Modal(Pop up) upon clicking on add button for the reuqests sent for rooms to be accepted or rejected by the recepitionist-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -224,9 +209,9 @@
         </div>
       </div>
     </div>
-    <!------------------------------ Modal end ----------------------------->
+<!----------------------------------------- Modal end ---------------------------------------------------------------------->
 
-    <!----------------------------------------- Modal icon edit ------------------------->
+<!------------------------ Modal icon edit [for editing info on reserved rooms]------------------------->
     <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
