@@ -1,4 +1,8 @@
-
+<?php
+session_start();
+include("../db_connect.php");
+include("../functions.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <title> Manage Receptionist </title>
@@ -108,37 +112,59 @@
 
 
                     <script>
-                         element = document.getElementById('e')
+                        element = document.getElementById('e')
                         // always checking if the element is clicked, if so, do alert('hello')
                         element.addEventListener("click", () => {
                             alert('Please Add Comments ');
                         });
-
                     </script>
 
                     <div class="btn btn-danger btn-sm px-1" id="d">Disable</div>
                     <script>
-                         element = document.getElementById('d')
+                        element = document.getElementById('d')
                         element.addEventListener("click", () => {
                             alert('bye');
                         });
                     </script>
-                
-                   <!-- <a href='#' title=''><img src='../assets/img/trash-fill.svg' class='img-responsive iconn3'></a>-->
-                   <!-- <a href='#' title=''><img src='../assets/img/pencil.svg' class='img-responsive iconn3'></a>-->
 
-                    <button class="btn" style="width:2px hight=2px;">
-                    <i class="fa fa-trash" style="font-size:17px;"></i>
+                    <!-- <a href='#' title=''><img src='../assets/img/trash-fill.svg' class='img-responsive iconn3'></a>-->
+                    <!-- <a href='#' title=''><img src='../assets/img/pencil.svg' class='img-responsive iconn3'></a>-->
+
+
+                    <!--TRASH EDIT BUTTON-->
+                    <button class="btn" style="width:2px hight=2px;" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                        <i class="fa fa-trash" style="font-size:17px;"></i>
                     </button>
-                    <button class="btn" style="width:2px hight=2px;">
-                    <i class="fa fa-pencil" style="font-size:17px;"></i>
+
+
+
+                    <!--PENCIL EDIT BUTTON-->
+                    <button class="btn" style="width:2px hight=2px;" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                        <i class="fa fa-pencil" style="font-size:17px;"></i>
                     </button>
+
+                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title " style="color: #2470dc;" id="exampleModalLabel1">Edit User Info</h5>
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container vw-75">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
                 <td>
                     <form>
-                     
+
                         <input type="com" id="textcom" name="text_name" style="width: 120px;" required>
-                    </form> 
+                    </form>
                 </td>
             </tr>
             <tr>
@@ -158,11 +184,29 @@
                     <div class="btn btn-primary btn-sm px-1">Enable</div>
                     <div class="btn btn-danger btn-sm px-1">Disable</div>
                     <button class="btn" style="width:2px hight=2px;">
-                    <i class="fa fa-trash" style="font-size:17px;"></i>
+                        <i class="fa fa-trash" style="font-size:17px;"></i>
                     </button>
-                    <button class="btn" style="width:2px hight=2px;">
-                    <i class="fa fa-pencil" style="font-size:17px;"></i>
+                   
+                    <!--PENCIL EDIT BUTTON-->
+                    <button class="btn" style="width:2px hight=2px;" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                        <i class="fa fa-pencil" style="font-size:17px;"></i>
                     </button>
+
+                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title " style="color: #2470dc;" id="exampleModalLabel1">Edit User Info</h5>
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container vw-75">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </td>
                 <td> <input type="com" id="textcom" name="text_name" style="width: 120px;" /> </td>
 
@@ -185,18 +229,36 @@
                     <div class="btn btn-primary btn-sm px-1">Enable</div>
                     <div class="btn btn-danger btn-sm px-1">Disable</div>
                     <button class="btn" style="width:2px hight=2px;">
-                    <i class="fa fa-trash" style="font-size:17px;"></i>
+                        <i class="fa fa-trash" style="font-size:17px;"></i>
                     </button>
-                    <button class="btn" style="width:2px hight=2px;">
-                    <i class="fa fa-pencil" style="font-size:17px;"></i>
+                    
+                    <!--PENCIL EDIT BUTTON-->
+                    <button class="btn" style="width:2px hight=2px;" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                        <i class="fa fa-pencil" style="font-size:17px;"></i>
                     </button>
+
+                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title " style="color: #2470dc;" id="exampleModalLabel1">Edit User Info</h5>
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container vw-75">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </td>
                 <td> <input type="com" id="textcom" name="text_name" style="width: 120px;" /> </td>
 
             </tr>
         </tbody>
     </table>
-    
+
     </form>
 
 
@@ -308,6 +370,9 @@
                 </div>
             </div>
         </div>
+
+
+
 </body>
 
 </html>
