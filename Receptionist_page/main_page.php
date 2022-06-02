@@ -115,37 +115,40 @@
             if (!$conn){
               die("Connection Failed: " . mysqli_connect_error());
             }
-            echo'<div class="alert alert-success alert-dismissible fade show">
+           /* echo'<div class="alert alert-success alert-dismissible fade show">
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             <strong>Success!</strong> Connected with database successfully.
-            </div>';
+            </div>';*/
             $query = "SELECT room_id,room_type,room_view,occupied  FROM rooms ";
             $result = $conn->query($query);
             if (!$result) {
             die ("Fatal Query error");
             }
-            echo'<div class="alert alert-success alert-dismissible fade show">
+            /*echo'<div class="alert alert-success alert-dismissible fade show">
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             <strong>Success!</strong> Query done successfully.
-            </div>';
+            </div>';*/
             $rows = $result->num_rows;
             
             for ($j=0; $j < $rows; $j++) {
               $row = $result->fetch_array(MYSQLI_ASSOC);
-              echo "<tr><td> ".$row['room_id']."</td> <td> ".$row['room_type']."</td><td>".$row['room_view']." </td> <td> ".$row['occupied']."</td>";
-              echo "<td>
-              <div class='row'>
-               <div class='col-1'>
-              <a data-bs-toggle='modal' id='editbtn' data-bs-target='#exampleModal2' onclick='UpdateDetails('.$row[room_id].')'><img src='../assets/img/ic_border_color_24px.svg' class='img-responsive iconn2'></a>
-               </div>
-               <div class='col-1'>
-               <a href='#' title=''><img src='../assets/img/ic_delete_24px.svg' class='img-responsive iconn3'></a>
-               </div>
+              $roomid=$row['room_id'];
+              echo '<tr><td> '.$row['room_id'].'</td> <td> '.$row['room_type'].'</td><td>'.$row['room_view'].' </td> <td> '.$row['occupied'].'</td>';
+              echo '<td>
+              <div class="row">
+               <div class="col">
+              <a href="UpdateAction.php?roomid=<?php echo $row[room_id]; ?>"><img src="../assets/img/ic_border_color_24px.svg" class="img-responsive iconn2"</a>
+              <a href="delete.php?deleteid='.$roomid.'"><img src="../assets/img/ic_delete_24px.svg" class="img-responsive iconn3"></a>
+              </div>
+               
+               
+               
 
-              </td>";
+              </td>';
               echo "</tr>";
               }
           ?>
+          
         </tbody>
       </table>
     </div> 
@@ -225,11 +228,11 @@
               <div class="row">
                 <div class="col">
                 <label class="form-label">Room number:</label>
-                <input type="text" class="form-control" name="ID" value="<?php echo $row['room_id'];  ?>">
+                <input type="text" class="form-control" name="ID" value="">
                 </div>
                 <div class="col">
                 <label class="form-label">Stay duration:</label>
-                <input type="text" class="form-control" name="stay" value="<?php echo $row['stay_duration'];  ?>">
+                <input type="text" class="form-control" name="stay" value="">
                 </div>
               </div>
               <div class="row">
@@ -244,17 +247,17 @@
                 </div>
                 <div class="col">
                 <label class="form-label">Price:</label>
-                <input type="text" class="form-control" name="price" value="<?php echo $row['price'];  ?>">
+                <input type="text" class="form-control" name="price" value="">
                 </div>
               </div>  
               <div class="row">
                 <div class="col">
                 <label class="form-label">Room Type:</label>
-                <input type="text" class="form-control" name="type" value="<?php echo $row['room_type'];  ?>">
+                <input type="text" class="form-control" name="type" value="">
                 </div>
                 <div class="col">
                 <label class="form-label">Room view:</label>
-                <input type="text" class="form-control" name="view" value="<?php echo $row['room_view'];  ?>">
+                <input type="text" class="form-control" name="view" value="">
                 </div>
               </div>  
             </form>
@@ -269,6 +272,8 @@
       </div>
     </div>
     <!------------------------------Modal end of the edit icon----------------------------->
+
+
  
 
 </body>
