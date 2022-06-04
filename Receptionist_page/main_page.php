@@ -97,7 +97,7 @@
 
     </div>
 <!--The Table giving it the position in page provided in style_receptionist.css-->
-   <div class="pos">
+   <div>
       <table class="table table-responsive table-bordered">
         <thead style="background-color: #caf0f8; color: #707070; font-weight: 300; font-style: normal;">
           <tr>
@@ -137,18 +137,15 @@
               echo '<td>
               <div class="row">
                <div class="col">
-              <a href="UpdateAction.php?roomid=<?php echo $row[room_id]; ?>"><img src="../assets/img/ic_border_color_24px.svg" class="img-responsive iconn2"</a>
+              <a  href="update.php?updateid='.$roomid.'"><img src="../assets/img/ic_border_color_24px.svg" class="img-responsive iconn2"</a>
               <a href="delete.php?deleteid='.$roomid.'"><img src="../assets/img/ic_delete_24px.svg" class="img-responsive iconn3"></a>
               </div>
-               
-               
-               
-
+              </div>
               </td>';
               echo "</tr>";
               }
           ?>
-          
+         
         </tbody>
       </table>
     </div> 
