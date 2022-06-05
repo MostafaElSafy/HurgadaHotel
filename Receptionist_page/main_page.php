@@ -161,17 +161,45 @@
           <div class="modal-body">
             <div class="container vw-75">
             <table class="table">
+           
   <thead>
     <tr>
       <th scope="col"></th>
       <th scope="col">Name</th>
       <th scope="col">Room no</th>
-      <th scope="col">Room type</th>
+      
       <th scope="col">  </th>
     </tr>
   </thead>
   <tbody>
-    <tr>
+  <?php
+            $conn = new mysqli("localhost","root","","hurghada_db");
+            if (!$conn){
+              die("Connection Failed: " . mysqli_connect_error());
+            }
+            $query = "SELECT room_id, firstname FROM rooms, guest WHERE rooms.room_id=guest.guest_id";
+            $result = $conn->query($query);
+            if (!$result) {
+            die ("Fatal Query error");
+            }
+            $rows = $result->num_rows;
+            
+            for ($j=0; $j < $rows; $j++) {
+              $row = $result->fetch_array(MYSQLI_ASSOC);
+              $roomid=$row['reserve_id'];
+              echo '<tr><td> '.$row['firstname'].'</td> <td> '.$row['room_id'].'</td>';
+              echo '<td>
+              <div class="row">
+               <div class="col">
+                <div class="btn btn-primary btn-sm">Accept</div>
+                <div class="btn btn-danger btn-sm px-3">Reject</div>
+              </div>
+              </div>
+              </td>';
+              echo "</tr>";
+              }
+            ?>
+    <!--<tr>
       <th scope="row">1</th>
       <td>Mark</td>
       <td>Otto</td>
@@ -196,79 +224,21 @@
       <td> <div class="btn btn-primary btn-sm">Accept</div></td>
       
       <td> <div class="btn btn-danger btn-sm px-3">Reject</div></td>
-    </tr>
+    </tr>----->
   </tbody>
 </table>
 
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary">Save </button>
+            
           </div>
         </div>
       </div>
     </div>
 <!----------------------------------------- Modal end ---------------------------------------------------------------------->
 
-<!------------------------ Modal icon edit [for editing info on reserved rooms]------------------------->
-    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title " style="color: #2470dc;" id="exampleModalLabel">Room Edit</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="container vw-75">
-            <form method="POST">
-              <div class="row">
-                <div class="col">
-                <label class="form-label">Room number:</label>
-                <input type="text" class="form-control" name="ID" value="">
-                </div>
-                <div class="col">
-                <label class="form-label">Stay duration:</label>
-                <input type="text" class="form-control" name="stay" value="">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                <label class="form-label">Occupied/Booked:</label>
-                <div>
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">Empty</label>
-                </div>
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                <label class="form-check-label" for="flexRadioDefault2">Booked</label>
-                </div>
-                <div class="col">
-                <label class="form-label">Price:</label>
-                <input type="text" class="form-control" name="price" value="">
-                </div>
-              </div>  
-              <div class="row">
-                <div class="col">
-                <label class="form-label">Room Type:</label>
-                <input type="text" class="form-control" name="type" value="">
-                </div>
-                <div class="col">
-                <label class="form-label">Room view:</label>
-                <input type="text" class="form-control" name="view" value="">
-                </div>
-              </div>  
-            </form>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary">Save </button>
-            <input type="hidden" id="hiddendata">
-          </div>
-        </div>
-      </div>
-    </div>
-    <!------------------------------Modal end of the edit icon----------------------------->
+
 
 
  
