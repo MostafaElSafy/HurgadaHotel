@@ -74,9 +74,9 @@ include("../functions.php");
 
     <div class="tab-pane fade" id="nav-Request" role="tabpanel" aria-labelledby="nav-Request-tab"></div>
     <table class="table table-striped table-hover">
-        <thead class="dark1">
+        <thead style="background-color: #0096c7 ; color:  rgba(242, 242, 242, 0.982);; font-weight:500;">
             <tr>
-                <th scope="col"></th>
+
                 <th scope="col"> Receptionist ID</th>
                 <th scope="col"> First Name</th>
                 <th scope="col"> Last Name</th>
@@ -88,104 +88,106 @@ include("../functions.php");
                 <th scope="col"> Address </th>
                 <th scope="col"> National ID</th>
                 <th scope="col"> Action </th>
-                <th scope="col"> Add Comments </th>
 
-                <th scope="col"> </th>
+
             </tr>
         </thead>
 
         <tbody id="myTable">
-         <!--Connecting the table that appears to the receptionist with the database-->
-          <?php
-            $conn = new mysqli("localhost","root","","hurghada_db");
-            if (!$conn){
-              die("Connection Failed: " . mysqli_connect_error());
+            <!--Connecting the table that appears to the receptionist with the database-->
+            <?php
+            $conn = new mysqli("localhost", "root", "", "hurghada_db");
+            if (!$conn) {
+                die("Connection Failed: " . mysqli_connect_error());
             }
-     
+
             $query = "SELECT receptionist_id , firstname, lastname , username, password, email, dateofbirth,  phonenumber, address, national_id  FROM receptionist ";
             $result = $conn->query($query);
             if (!$result) {
-            die ("Fatal Query error");
+                die("Fatal Query error");
             }
-  
+
             $rows = $result->num_rows;
-            
-            for ($j=0; $j < $rows; $j++) {
-              $row = $result->fetch_array(MYSQLI_ASSOC);
-              $receptionist_id=$row['receptionist_id'];
-              echo '<tr><td> '.$row['receptionist_id'].'</td> <td> '.$row['firstname'].'</td><td>'.$row['lastname'].' </td> <td> '.$row['username'].'</td> <td> '.$row['password'].'</td><td> '.$row['email'].'</td><td> '.$row['dateofbirth'].'</td><td> '.$row['phonenumber'].'</td><td> '.$row['address'].'</td><td> '.$row['national_id'].'</td>';
-              echo '<td>
+
+            for ($j = 0; $j < $rows; $j++) {
+                $row = $result->fetch_array(MYSQLI_ASSOC);
+                $receptionist_id = $row['receptionist_id'];
+
+                echo '<tr><td> ' . $row['receptionist_id'] . '</td> <td> ' . $row['firstname'] . '</td><td>' . $row['lastname'] . ' </td> <td> ' . $row['username'] . '</td> <td> ' . $row['password'] . '</td><td> ' . $row['email'] . '</td><td> ' . $row['dateofbirth'] . '</td><td> ' . $row['phonenumber'] . '</td><td> ' . $row['address'] . '</td><td> ' .
+                    $row['national_id'] . '</td>';
+
+                echo '<td>
               <div class="row">
                <div class="col">
-              <a href="updateQC.php?updateid='.$receptionist_id.'"><img src="../assets/img/ic_border_color_24px.svg" class="img-responsive iconn2"</a>
-              <a href="deleteQC.php?deleteid='.$receptionist_id.'"><img src="../assets/img/ic_delete_24px.svg" class="img-responsive iconn3"></a>
+              <a href="updateQC.php?updateid=' . $receptionist_id . '"><img src="../assets/img/ic_border_color_24px.svg" class="img-responsive iconn2"</a>
+              <a href="deleteQC.php?deleteid=' . $receptionist_id . '"><img src="../assets/img/ic_delete_24px.svg" class="img-responsive iconn3"></a>
               </div>
               </div>
               </td>';
-              echo "</tr>";
-              }
-          ?>
-         
+                echo "</tr>";
+            }
+            ?>
+
         </tbody>
-      </table>
+    </table>
 
     </form>
     <!-------- Modal icon edit [for editing info on reserved rooms]------------------------->
     <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title " style="color: #2470dc;" id="exampleModalLabel">Room Edit</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="container vw-75">
-            <form method="POST">
-              <div class="row">
-                <div class="col">
-                <label class="form-label">Room number:</label>
-                <input type="text" class="form-control" name="ID" value="">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title " style="color: #2470dc;" id="exampleModalLabel">Room Edit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="col">
-                <label class="form-label">Stay duration:</label>
-                <input type="text" class="form-control" name="stay" value="">
+                <div class="modal-body">
+                    <div class="container vw-75">
+
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">Room number:</label>
+                                <input type="text" class="form-control" name="ID" value="">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Stay duration:</label>
+                                <input type="text" class="form-control" name="stay" value="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">Occupied/Booked:</label>
+                                <div>
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">Empty</label>
+                                </div>
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                <label class="form-check-label" for="flexRadioDefault2">Booked</label>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Price:</label>
+                                <input type="text" class="form-control" name="price" value="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">Room Type:</label>
+                                <input type="text" class="form-control" name="type" value="">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Room view:</label>
+                                <input type="text" class="form-control" name="view" value="">
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                <label class="form-label">Occupied/Booked:</label>
-                <div>
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">Empty</label>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save </button>
+                    <input type="hidden" id="hiddendata">
                 </div>
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                <label class="form-check-label" for="flexRadioDefault2">Booked</label>
-                </div>
-                <div class="col">
-                <label class="form-label">Price:</label>
-                <input type="text" class="form-control" name="price" value="">
-                </div>
-              </div>  
-              <div class="row">
-                <div class="col">
-                <label class="form-label">Room Type:</label>
-                <input type="text" class="form-control" name="type" value="">
-                </div>
-                <div class="col">
-                <label class="form-label">Room view:</label>
-                <input type="text" class="form-control" name="view" value="">
-                </div>
-              </div>  
-            </form>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary">Save </button>
-            <input type="hidden" id="hiddendata">
-          </div>
         </div>
-      </div>
     </div>
     <!------------------------------Modal end of the edit icon----------------------------->
 
@@ -200,34 +202,35 @@ include("../functions.php");
                 <div class="modal-body">
                     <div class="container vw-75">
 
-                        <form class="was-validated">
+
                         <?php
-                        
 
-                            if (isset($_POST['submit'])) {
-                                //something was posted
-                                $firstname = $_POST['firstName'];
-                                $lastname = $_POST['lastname'];
-                                $username = $_POST['username'];
-                                $password = $_POST['password'];
-                                $email = $_POST['email'];
-                                $dateofbirth = $_POST['dateofbirth'];
-                                $phonenumber = $_POST['phonenumber'];
-                                $address = $_POST['address'];
-                                $national_id = $_POST['national_id'];
-                               
 
-                            $conn = new mysqli("localhost","root","","hurghada_db");
-                            if (!$conn){
-                            die("Connection Failed: " . mysqli_connect_error());
+                        if (isset($_POST['submit'])) {
+                            //something was posted
+                            $firstname = $_POST['firstName'];
+                            $lastname = $_POST['lastname'];
+                            $username = $_POST['username'];
+                            $password = $_POST['password'];
+                            $email = $_POST['email'];
+                            $dateofbirth = $_POST['dateofbirth'];
+                            $phonenumber = $_POST['phonenumber'];
+                            $address = $_POST['address'];
+                            $national_id = $_POST['national_id'];
+
+                            if (!$conn) {
+                                die("Connection Failed: " . mysqli_connect_error());
                             }
                             $sql = " INSERT INTO receptionist(firstname,lastname,username, password, email,dateofbirth,phonenumber, address, national_id)
-                            VALUES ('$firstname','$lastname','$username','$password','$email','$dateofbirth','$phonenumber','$address','$national_id') ";
+VALUES ('$firstname','$lastname','$username','$password','$email','$dateofbirth','$phonenumber','$address','$national_id') ";
 
-                            $result=mysqli_query($conn,$sql);
+                            $result = mysqli_query($conn, $sql);
                         }
-                            ?>
-                            
+                        ?>
+
+                        <form method="POST" class="was-validated">
+
+
 
                             <div class="row g-3">
                                 <div class="col">
@@ -286,12 +289,12 @@ include("../functions.php");
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary" name="submit">Save </button>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary" name="submit">Save </button>
+                            </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
 
 
