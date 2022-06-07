@@ -82,7 +82,7 @@ include("../functions.php");
                 <th scope="col"> Last Name</th>
                 <th scope="col"> Username </th>
                 <th scope="col"> Password</th>
-                <th scope="col">Email</th>
+                <th scope="col"> Email</th>
                 <th scope="col"> Date of birth</th>
                 <th scope="col"> Phone Number </th>
                 <th scope="col"> Address </th>
@@ -94,177 +94,100 @@ include("../functions.php");
             </tr>
         </thead>
 
-        <tbody>
-            <tr>
-                <th scope="row"> 1 </th>
-                <td>0001</td>
-                <td>Sandra </td>
-                <td>Alex</td>
-                <td>sandra_alex</td>
-                <td>123</td>
-                <td>@sandraalex</td>
-                <td>5/2/1999</td>
-                <td>01125111</td>
-                <td>refaat st</td>
-                <td>2625462845</td>
-                <td>
-                    <div class="btn btn-primary btn-sm px-1" id="e">Enable</div>
-
-
-                    <script>
-                        element = document.getElementById('e')
-                        // always checking if the element is clicked, if so, do alert('hello')
-                        element.addEventListener("click", () => {
-                            alert('Please Add Comments ');
-                        });
-                    </script>
-
-                    <div class="btn btn-danger btn-sm px-1" id="d">Disable</div>
-                    <script>
-                        element = document.getElementById('d')
-                        element.addEventListener("click", () => {
-                            alert('bye');
-                        });
-                    </script>
-
-                    <!-- <a href='#' title=''><img src='../assets/img/trash-fill.svg' class='img-responsive iconn3'></a>-->
-                    <!-- <a href='#' title=''><img src='../assets/img/pencil.svg' class='img-responsive iconn3'></a>-->
-
-
-                    <!--TRASH EDIT BUTTON-->
-                    <button class="btn" style="width:2px hight=2px;" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-                        <i class="fa fa-trash" style="font-size:17px;"></i>
-                    </button>
-
-
-
-                    <!--PENCIL EDIT BUTTON-->
-                    <button class="btn" style="width:2px hight=2px;" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-                        <i class="fa fa-pencil" style="font-size:17px;"></i>
-                    </button>
-
-                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-xl">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title " style="color: #2470dc;" id="exampleModalLabel1">Edit User Info</h5>
-                                    </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="container vw-75">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                <td>
-                    <form>
-
-                        <input type="com" id="textcom" name="text_name" style="width: 120px;" required>
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>0002</td>
-                <td>Aline </td>
-                <td>Jason</td>
-                <td>aline_jason</td>
-                <td>264</td>
-                <td>@alinejason</td>
-                <td>5/9/1999</td>
-                <td>01126511</td>
-                <td>youssef sebaie st</td>
-                <td>2622965445</td>
-
-                <td>
-                    <div class="btn btn-primary btn-sm px-1">Enable</div>
-                    <div class="btn btn-danger btn-sm px-1">Disable</div>
-                    <button class="btn" style="width:2px hight=2px;">
-                        <i class="fa fa-trash" style="font-size:17px;"></i>
-                    </button>
-                   
-                    <!--PENCIL EDIT BUTTON-->
-                    <button class="btn" style="width:2px hight=2px;" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-                        <i class="fa fa-pencil" style="font-size:17px;"></i>
-                    </button>
-
-                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-xl">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title " style="color: #2470dc;" id="exampleModalLabel1">Edit User Info</h5>
-                                    </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="container vw-75">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-                <td> <input type="com" id="textcom" name="text_name" style="width: 120px;" /> </td>
-
-
-
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>0003</td>
-                <td>Youssef </td>
-                <td> Samy </td>
-                <td>youssef_samy</td>
-                <td>289</td>
-                <td>@youssefsamy</td>
-                <td>11/10/1998</td>
-                <td>01126511</td>
-                <td> ahmed azmy st</td>
-                <td>2681965547</td>
-                <td>
-                    <div class="btn btn-primary btn-sm px-1">Enable</div>
-                    <div class="btn btn-danger btn-sm px-1">Disable</div>
-                    <button class="btn" style="width:2px hight=2px;">
-                        <i class="fa fa-trash" style="font-size:17px;"></i>
-                    </button>
-                    
-                    <!--PENCIL EDIT BUTTON-->
-                    <button class="btn" style="width:2px hight=2px;" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-                        <i class="fa fa-pencil" style="font-size:17px;"></i>
-                    </button>
-
-                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-xl">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title " style="color: #2470dc;" id="exampleModalLabel1">Edit User Info</h5>
-                                    </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="container vw-75">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-                <td> <input type="com" id="textcom" name="text_name" style="width: 120px;" /> </td>
-
-            </tr>
+        <tbody id="myTable">
+         <!--Connecting the table that appears to the receptionist with the database-->
+          <?php
+            $conn = new mysqli("localhost","root","","hurghada_db");
+            if (!$conn){
+              die("Connection Failed: " . mysqli_connect_error());
+            }
+     
+            $query = "SELECT receptionist_id , firstname, lastname , username, password, email, dateofbirth,  phonenumber, address, national_id  FROM receptionist ";
+            $result = $conn->query($query);
+            if (!$result) {
+            die ("Fatal Query error");
+            }
+  
+            $rows = $result->num_rows;
+            
+            for ($j=0; $j < $rows; $j++) {
+              $row = $result->fetch_array(MYSQLI_ASSOC);
+              $receptionist_id=$row['receptionist_id'];
+              echo '<tr><td> '.$row['receptionist_id'].'</td> <td> '.$row['firstname'].'</td><td>'.$row['lastname'].' </td> <td> '.$row['username'].'</td> <td> '.$row['password'].'</td><td> '.$row['email'].'</td><td> '.$row['dateofbirth'].'</td><td> '.$row['phonenumber'].'</td><td> '.$row['address'].'</td><td> '.$row['national_id'].'</td>';
+              echo '<td>
+              <div class="row">
+               <div class="col">
+              <a href="updateQC.php?updateid='.$receptionist_id.'"><img src="../assets/img/ic_border_color_24px.svg" class="img-responsive iconn2"</a>
+              <a href="deleteQC.php?deleteid='.$receptionist_id.'"><img src="../assets/img/ic_delete_24px.svg" class="img-responsive iconn3"></a>
+              </div>
+              </div>
+              </td>';
+              echo "</tr>";
+              }
+          ?>
+         
         </tbody>
-    </table>
+      </table>
 
     </form>
-
-
-
-
-
+    <!-------- Modal icon edit [for editing info on reserved rooms]------------------------->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title " style="color: #2470dc;" id="exampleModalLabel">Room Edit</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container vw-75">
+            <form method="POST">
+              <div class="row">
+                <div class="col">
+                <label class="form-label">Room number:</label>
+                <input type="text" class="form-control" name="ID" value="">
+                </div>
+                <div class="col">
+                <label class="form-label">Stay duration:</label>
+                <input type="text" class="form-control" name="stay" value="">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                <label class="form-label">Occupied/Booked:</label>
+                <div>
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">Empty</label>
+                </div>
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">Booked</label>
+                </div>
+                <div class="col">
+                <label class="form-label">Price:</label>
+                <input type="text" class="form-control" name="price" value="">
+                </div>
+              </div>  
+              <div class="row">
+                <div class="col">
+                <label class="form-label">Room Type:</label>
+                <input type="text" class="form-control" name="type" value="">
+                </div>
+                <div class="col">
+                <label class="form-label">Room view:</label>
+                <input type="text" class="form-control" name="view" value="">
+                </div>
+              </div>  
+            </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary">Save </button>
+            <input type="hidden" id="hiddendata">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!------------------------------Modal end of the edit icon----------------------------->
 
     <!--Create New User Form-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -278,28 +201,49 @@ include("../functions.php");
                     <div class="container vw-75">
 
                         <form class="was-validated">
+                        <?php
+                        
 
-                            <div class="mb-3">
-                                Receptionist ID <input type="text" class="form-control" placeholder="Receptionist ID" name="recepID" required>
-                                <div class="valid-feedback">Valid.</div>
-                                <div class="invalid-feedback">Please fill out this field.</div>
-                            </div>
+                            if (isset($_POST['submit'])) {
+                                //something was posted
+                                $firstname = $_POST['firstName'];
+                                $lastname = $_POST['lastname'];
+                                $username = $_POST['username'];
+                                $password = $_POST['password'];
+                                $email = $_POST['email'];
+                                $dateofbirth = $_POST['dateofbirth'];
+                                $phonenumber = $_POST['phonenumber'];
+                                $address = $_POST['address'];
+                                $national_id = $_POST['national_id'];
+                               
+
+                            $conn = new mysqli("localhost","root","","hurghada_db");
+                            if (!$conn){
+                            die("Connection Failed: " . mysqli_connect_error());
+                            }
+                            $sql = " INSERT INTO receptionist(firstname,lastname,username, password, email,dateofbirth,phonenumber, address, national_id)
+                            VALUES ('$firstname','$lastname','$username','$password','$email','$dateofbirth','$phonenumber','$address','$national_id') ";
+
+                            $result=mysqli_query($conn,$sql);
+                        }
+                            ?>
+                            
 
                             <div class="row g-3">
                                 <div class="col">
-                                    First Name <input type="text" class="form-control" placeholder="First name" name="fname" required>
+                                    First Name <input type="text" class="form-control" placeholder="First name" name="firstname" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
 
                                 <div class="col">
-                                    Last Name <input type="text" class="form-control" placeholder="Last name" name="lname" required>
+                                    Last Name <input type="text" class="form-control" placeholder="Last name" name="lastname" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
 
                                 <div class="col">
-                                    Username <input type="text" class="form-control" placeholder="Username" name="uname" required>
+                                    Username <input type="text" class="form-control" placeholder="Username" name="username" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
@@ -337,36 +281,14 @@ include("../functions.php");
                             </div>
 
                             <div class="mb-3">
-                                National ID <input type="text" class="form-control" placeholder="National ID" name="nationalid" required>
+                                National ID <input type="text" class="form-control" placeholder="National ID" name="national_id" required>
                                 <div class="valid-feedback">Valid.</div>
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
 
-                            <div class="row g-3">
-                                <div class="col">
-                                    Role: <select class="form-select is-invalid" id="autoSizingSelect" name="role" required>
-                                        <option selected disabled value>Choose...</option>
-                                        <option value="0">Choose Manager or Receptionist</option>
-                                        <option value="1">Manager</option>
-                                        <option value="2">Receptionist</option>
-                                        <div class="valid-feedback">Valid.</div>
-                                        <div class="invalid-feedback">Please fill out this field.</div>
-
-                                    </select>
-
-                                    <div class="col">
-                                        Comments <input type="comments" class="form-control" placeholder="comments" name="comments" required>
-                                        <div class="valid-feedback">Valid.</div>
-                                        <div class="invalid-feedback">Please fill out this field.</div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Save </button>
+                    <button type="submit" class="btn btn-primary" name="submit">Save </button>
                 </div>
             </div>
         </div>

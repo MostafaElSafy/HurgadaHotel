@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <span class="form-label">Phone</span>
-                                            <input type="text" pattern="[0][0-9]{10}" class="form-control" name="phone"
+                                            <input type="text" class="form-control" name="phone"
                                              oninvalid="this.setCustomValidity('please enter a valid phone number')" required>
                                         </div>
                                     </div>

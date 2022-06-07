@@ -14,6 +14,12 @@ session_start();
   <link type="text/css" rel="stylesheet" href="../assets/css/bootstrap.min.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+
 
   <script src="bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
 <link rel="stylesheet" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
@@ -240,28 +246,21 @@ session_start();
           <label class="form-label" for="addANote" style="color: white;">+ Add a note</label>
           <input type="text" id="addANote" class="form-control" placeholder="Type comment..." />
         </div>
-        <button type="button" class="btn btn-info">
-        
-        <!--<script>
-                swal({
-          title: 'Are you sure you want to submit this comment?',
-          text: "You won't be able to revert this!",
-          type: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, submit it!'
-        }).then(function () {
-          swal(
-            'Message Submitted!',
-            'success'
-          )
-        })
-        </script>-->
+
+  
+        <button type="button" id="success" class="btn btn-info">
+    
           Submit Comment
         </button>
-
-       
+        <script>
+       $(document).on('click', '#success', function(e) {
+			swal(
+				'Success',
+				'You clicked the <b style="color:green;">Success</b> button!',
+				'success'
+			)
+		});
+       </script>
         </div>
       </div>
     </div>
