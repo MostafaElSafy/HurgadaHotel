@@ -13,8 +13,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if (!empty($email) && !empty($password) && !is_numeric($email)) {
 
+
+        if ($_POST['email'] == 'admin@gmail.com' && $_POST['password'] == 'admin') {
+
+            header("Location: ../Manager_view/Manager_view(QC).php");
+        }
+        else
+        {
+
         //read from database
-        $query = "select * from guest where email = '$email' limit 1";
+        $query = "select * from receptionist where email = '$email' limit 1";
         $result = mysqli_query($conn, $query);
 
         if ($result) {
@@ -25,13 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 if ($user_data['password'] === $password) {
 
                     $_SESSION['user_id'] = $user_data['user_id'];
-                    header("Location: reservation.php");
+                    header("Location: ../Receptionist_page/main_page.php");
                     die;
                 }
             }
         }
-
-
+    }
     } else {
         $logerr = " ";
     }
@@ -102,22 +109,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     <!------BIG- container-->
 
-    <div class="container w-75 h-75 main ">
+    <div class="container w-75 h-75 main d-flex justify-content-center ">
 
-        <div class="row w-100 h-100 d-flex ">
+        <div class="row d-flex justify-content-center w-50 h-100 d-flex ">
 
             <!-------Words side----->
-
-            <div class="col h-100  align-content-center  d-none d-md-block     wordSide">
-
-                <h1> Welcom Back!</h1>
-
-                <h6>
-                    We are excited to see you again Kindly enter your credtials to log in your account
-                    <a href="reciption_adminLogin.php" class="staffLink link-light "> A Staff member click here ?</a>
-                </h6>
-
-            </div>
 
             <!-----form side--------->
             <div class="col justify-content-center align-items-center  formSide">
@@ -149,9 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                             <div class="mb-5">
                                 <label for="exampleInputPassword1" class="form-label small">Password</label>
-                                <input type="password" name="password" class="form-control" id="exampleInputPassword1"
-
-                                >
+                                <input type="password" name="password" class="form-control" id="exampleInputPassword1">
 
 
                             </div>
@@ -165,15 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                             </div>
 
-                            <div class="row">
 
-                                <div class="col-sm-12 d-flex float-end flex-nowrap  mt-4">
-                                    <div class="text-muted text-sm-start">
-                                        Don't have an account yet ? <a href="index.php">Sign Up</a>
-                                    </div>
-                                </div>
-
-                            </div>
                     </div>
 
 

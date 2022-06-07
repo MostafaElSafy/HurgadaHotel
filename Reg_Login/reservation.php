@@ -144,7 +144,8 @@ include("../functions.php");
                         }
                         $query = "SELECT room_id,room_type,room_view,price,max  FROM rooms WHERE room_view='$_POST[view]' AND room_type= '$_POST[type]' AND max >= '$_POST[guests]' ";
                         $result = $conn->query($query);
-                        if (!$result) {
+                        if (!$result)
+                        {
                             die("Fatal Query error");
                         }
 
@@ -152,9 +153,13 @@ include("../functions.php");
                         for ($j = 0; $j < $rows; $j++) {
 
                             $row = $result->fetch_array(MYSQLI_ASSOC);
+
+                            $_SESSION['R_id'] =  $row['room_id'];
+
+
                             echo "<tr> <td> " . $row['room_id'] . "</td> <td> " . $row['room_type'] . "</td><td>" . $row['room_view'] . " </td> <td>" . $row['price']
                               . "</td><td>" . $row['max'] . " </td>" . "<td>  <a class='btn btn-outline-primary' href='img.php' role='button'>Reserve</a> </td>";
-                        }
+                            }
                         ?>
                     </tbody>
                 </table>
