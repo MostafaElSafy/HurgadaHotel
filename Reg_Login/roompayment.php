@@ -61,17 +61,17 @@ include("../functions.php");
 
       </div>
 
-      <form class="needs-validation mt-4" novalidate>
+      <form method="POST" action="finalize.php" class="needs-validation mt-4" novalidate>
 
         <h4 class="mb-3 text-primary">Payment</h4>
         <hr>
         <div class="my-3">
           <div class="form-check">
-            <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+            <input id="credit" name="paymentMethod" value="credit" type="radio" class="form-check-input" checked required>
             <label class="form-check-label" for="credit">Credit card</label>
           </div>
           <div class="form-check">
-            <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+            <input id="debit" name="paymentMethod" value="debit" type="radio" class="form-check-input" required>
             <label class="form-check-label" for="debit">Debit card</label>
           </div>
 
