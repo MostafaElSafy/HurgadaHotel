@@ -45,11 +45,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         //save to database
         $guest_id = random_num(20);
-        //$_SESSION['g_id'] =  $guest_id;
+
         $query = " INSERT INTO guest(firstname,lastname,email,password,dateofbirth,extramembers,guest_id,phonenumber,nationality)
         VALUES ('$fn','$ln','$email','$pass','$dof','$famCount','$guest_id','$phone','$nationality') ";
         mysqli_query($conn, $query);
-
+        $_SESSION['fn'] =  $fn;
         header("Location: signin.php");
         die;
     } else {

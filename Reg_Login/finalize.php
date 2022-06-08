@@ -8,9 +8,10 @@ $pay=$_POST['paymentMethod'];
 
 $room_id = $_SESSION['R_id'];
 $guest_id= $_SESSION['g_id'] ;
-
-$query = " INSERT INTO reserve(room_id,guest_id,payment,roompending)
-VALUES ('$room_id','$guest_id','$_POST[paymentMethod]','pending') ";
+$fn = $_POST['firstName'];
+  $fn= $_SESSION['name'] ;
+$query = " INSERT INTO reserve(room_id,fn,payment,roompending)
+VALUES ('$room_id','$fn','$_POST[paymentMethod]','pending') ";
 mysqli_query($conn, $query);
 
 

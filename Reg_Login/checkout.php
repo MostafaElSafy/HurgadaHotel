@@ -40,7 +40,7 @@ include("../functions.php");
 
                 </ul>
                 <span class="navbar-text">
-                    <a class="nav-link" href="checkout.php">Room Checkout</a>
+                    <a class="nav-link" href="reservation.php">Room CheckIn</a>
                 </span>
                 <span class="navbar-text">
                     <a class="nav-link" href="logout.php">Logout</a>
@@ -51,8 +51,8 @@ include("../functions.php");
 
     <div class="container">
         <div class="row">
-            <h2 class="mt-3">
-                Book Your Room
+            <h2 class="mt-4">
+                Thank You for your stay , See You soon !
             </h2>
         </div>
 
@@ -170,12 +170,6 @@ include("../functions.php");
         </div>
 
     </div>
-
-
-
-
-
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
