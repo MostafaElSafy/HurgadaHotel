@@ -1,3 +1,9 @@
+<?php
+session_start();
+include("../db_connect.php");
+include("../functions.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -164,7 +170,7 @@
            
   <thead>
     <tr>
-      <th scope="col"></th>
+      <th scope="col">Res no</th>
       <th scope="col">Name</th>
       <th scope="col">Room no</th>
       
@@ -177,7 +183,7 @@
             if (!$conn){
               die("Connection Failed: " . mysqli_connect_error());
             }
-            $query = "SELECT room_id, firstname FROM rooms, guest WHERE rooms.room_id=guest.guest_id";
+            $query = "SELECT reserve_id,room_id,fn FROM reserve";
             $result = $conn->query($query);
             if (!$result) {
             die ("Fatal Query error");
@@ -186,13 +192,14 @@
             
             for ($j=0; $j < $rows; $j++) {
               $row = $result->fetch_array(MYSQLI_ASSOC);
-              $roomid=$row['reserve_id'];
-              echo '<tr><td> '.$row['firstname'].'</td> <td> '.$row['room_id'].'</td>';
+              $reserveid=$row['reserve_id'];
+              $roid=$row['room_id'];
+              echo '<tr><td> '.$row['reserve_id'].'</td> <td> '.$row['fn'].'</td> <td> '.$row['room_id'].'</td>';
               echo '<td>
               <div class="row">
                <div class="col">
-                <div class="btn btn-primary btn-sm">Accept</div>
-                <div class="btn btn-danger btn-sm px-3">Reject</div>
+                <div><a  href="accept.php?acceptid='.$reserveid.'&bookedid='.$roid.'" class="btn btn-primary btn-sm">Accept</a></div>
+                <div><a  href="reject.php?rejectid='.$reserveid.'"class="btn btn-danger btn-sm px-3">Reject</a></div>
               </div>
               </div>
               </td>';
