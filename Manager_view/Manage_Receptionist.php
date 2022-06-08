@@ -208,7 +208,7 @@ include("../functions.php");
 
                         if (isset($_POST['submit'])) {
                             //something was posted
-                            $firstname = $_POST['firstName'];
+                            $firstname = $_POST['firstname'];
                             $lastname = $_POST['lastname'];
                             $username = $_POST['username'];
                             $password = $_POST['password'];
@@ -295,8 +295,16 @@ VALUES ('$firstname','$lastname','$username','$password','$email','$dateofbirth'
                             </div>
                     </div>
                 </div>
-
-
+                <!--VALIDATIONS-->
+                <?php
+                $firstname = $_POST["firstname"];
+                if (!preg_match("/^[a-zA-z]*$/", $firstname)) {
+                    $ErrMsg = "Only alphabets are allowed.";
+                    echo $ErrMsg;
+                } else {
+                    echo $firstname;
+                }
+                ?>
 
 </body>
 
