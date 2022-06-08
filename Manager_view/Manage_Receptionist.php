@@ -204,9 +204,83 @@ include("../functions.php");
 
 
                         <?php
-
-
                         if (isset($_POST['submit'])) {
+
+                            $firstname = $_POST["firstname"];
+                            if (empty($_POST["firstname"])) {
+
+                                echo '<script>alert ("name is required")</script>';
+                            }
+                            if (!preg_match("/[a-zA-Z]/", $firstname)) {
+                                echo '<script> alert("firstname") </script> ';
+                            }
+
+                            $lastname = $_POST["lastname"];
+                            if (empty($_POST["lastname"])) {
+
+                                echo '<script>alert ("name is required")</script>';
+                            }
+                            if (!preg_match("/[a-zA-Z]/", $lastname)) {
+                                echo '<script> alert("lastname") </script> ';
+                            }
+                            $username = $_POST["username"];
+                            if (empty($_POST["usernname"])) {
+                                echo '<script>alert ("username is required")</script>';
+                            }
+
+                            $resultset_1 = mysqli_query($conn, "select * from receptionist where firstname='" . $firstname . "' ");
+                            $count = mysqli_num_rows($resultset_1);
+                            die;   /* to turn off the connection*/
+                            $resultset_2 = mysqli_query($conn, "select * from receptionist where lastname='" . $lastname . "' ");
+                            $count = mysqli_num_rows($resultset_2);
+                            die;   /* to turn off the connection*/
+                            $resultset_3 = mysqli_query($conn, "select * from receptionist where username='" . $username . "' ");
+                            $count = mysqli_num_rows($resultset_3);
+                            die;   /* to turn off the connection*/
+                            
+
+                            if (!preg_match("/^[0-9a-zA-Z]+$/", $password)) {
+                            $password = $_POST["password"];
+                            if (empty($_POST["password"])) {
+                                echo '<script>alert ("password is required")</script>';
+                            }
+
+                            $email = $_POST["email"];
+                            if (empty($_POST["email"])) {
+                                echo '<script>alert ("email is required")</script>';
+                            }
+
+                            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                                echo '<script>alert ("invalid email format")</script>';
+                            }
+
+
+                            $phonenumber = $_POST["phonenumber"];
+                            if (empty($_POST["phonenumber"])) {
+                                echo '<script>alert ("phone is required")</script>';
+                            }
+
+                            $address = $_POST["address"];
+                            if (empty($_POST["address"])) {
+                                echo '<script>alert ("address is required")</script>';
+                            }
+
+                            $resultset_4 = mysqli_query($conn, "select * from receptionist where address='" . $address . "' ");
+                            $count = mysqli_num_rows($resultset_4);
+                            die; 
+
+                           $dateofbirth = $_POST["dateofbirth"];
+                            if (empty($_POST["dateofbirth"])) {
+                                echo '<script>alert ("dateofbirth is required")</script>';
+                            }
+
+                            $national_id = $_POST["national_id"];
+                            if (empty($_POST["national_id"])) {
+                                echo '<script>alert ("national_id is required")</script>';
+                            }
+
+                        
+
                             //something was posted
                             $firstname = $_POST['firstname'];
                             $lastname = $_POST['lastname'];
@@ -222,89 +296,56 @@ include("../functions.php");
                                 die("Connection Failed: " . mysqli_connect_error());
                             }
                             $sql = " INSERT INTO receptionist(firstname,lastname,username, password, email,dateofbirth,phonenumber, address, national_id)
-VALUES ('$firstname','$lastname','$username','$password','$email','$dateofbirth','$phonenumber','$address','$national_id') ";
+                            VALUES ('$firstname','$lastname','$username','$password','$email','$dateofbirth','$phonenumber','$address','$national_id') ";
 
                             $result = mysqli_query($conn, $sql);
                         }
+
+                    }
                         ?>
 
-                        <form method="POST" class="was-validated">
-
-
-
+                        <form method="post">
                             <div class="row g-3">
                                 <div class="col">
                                     First Name <input type="text" class="form-control" placeholder="First name" name="firstname" required>
-                                    <div class="valid-feedback">Valid.</div>
-                                    <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
-
                                 <div class="col">
                                     Last Name <input type="text" class="form-control" placeholder="Last name" name="lastname" required>
-                                    <div class="valid-feedback">Valid.</div>
-                                    <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
-
                                 <div class="col">
                                     Username <input type="text" class="form-control" placeholder="Username" name="username" required>
-                                    <div class="valid-feedback">Valid.</div>
-                                    <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
                             </div>
                             <br>
                             <div class="row g-3">
                                 <div class="col">
                                     Password <input type="password" class="form-control" placeholder="password" name="password" required>
-                                    <div class="valid-feedback">Valid.</div>
-                                    <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
                                 <div class="col">
                                     Email <input type="email" class="form-control" placeholder="email" name="email" required>
-                                    <div class="valid-feedback">Valid.</div>
-                                    <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
                             </div>
                             <br>
                             <div class="mb-3">
                                 Date of birth <input type="date" class="form-control" placeholder="Date of birth" name="dateofbirth" required>
-                                <div class="valid-feedback">Valid.</div>
-                                <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
-
                             <div class="mb-3">
                                 Phone Number <input type="text" class="form-control" placeholder="Phone Number" name="phonenumber" required>
-                                <div class="valid-feedback">Valid.</div>
-                                <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
-
                             <div class="mb-3">
                                 Address <input type="text" class="form-control" placeholder="Address" name="address" required>
-                                <div class="valid-feedback">Valid.</div>
-                                <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
-
                             <div class="mb-3">
                                 National ID <input type="text" class="form-control" placeholder="National ID" name="national_id" required>
-                                <div class="valid-feedback">Valid.</div>
-                                <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-primary" name="submit">Save </button>
+                                <button type="submit" class="btn btn-primary" name="submit" onclick="validateform()">Save </button>
                             </div>
                     </div>
                 </div>
-                <!--VALIDATIONS-->
-                <?php
-                $firstname = $_POST["firstname"];
-                if (!preg_match("/^[a-zA-z]*$/", $firstname)) {
-                    $ErrMsg = "Only alphabets are allowed.";
-                    echo $ErrMsg;
-                } else {
-                    echo $firstname;
-                }
-                ?>
+
 
 </body>
 
