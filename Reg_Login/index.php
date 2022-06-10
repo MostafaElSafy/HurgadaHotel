@@ -60,8 +60,8 @@
             //save to database
             $guest_id = random_num(20);
             //$_SESSION['g_id'] =  $guest_id;
-            $query = " INSERT INTO guest(firstname,lastname,email,password,dateofbirth,extramembers,guest_id,phonenumber,nationality)
-        VALUES ('$fn','$ln','$email','$pass','$dof','$famCount','$guest_id','$phone','$nationality') ";
+            $query = " INSERT INTO guest(firstname,lastname,email,password,dateofbirth,extramembers,guest_id,phonenumber,nationality,state)
+        VALUES ('$fn','$ln','$email','$pass','$dof','$famCount','$guest_id','$phone','$nationality','disable') ";
             mysqli_query($conn, $query);
 
             header("Location: signin.php");
