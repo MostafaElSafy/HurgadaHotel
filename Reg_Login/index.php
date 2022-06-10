@@ -9,9 +9,9 @@
 ?>
 <?php
   /*--------------------------------Validations------------------------*/
-  if (isset($_POST['submit'])) {
+  /*if (isset($_POST['submit'])) {*/
 /*-----------firstname---------------*/
-    $fn = $_POST["firstName"];
+   /* $fn = $_POST["firstName"];
     if (empty($_POST["firstName"])) {
 
         echo '<script>alert ("name is required")</script>';
@@ -21,9 +21,9 @@
     }
     $resultset_1 = mysqli_query($conn, "select * from receptionist where firstname='" . $fn . "' ");
     $count = mysqli_num_rows($resultset_1);
-    die;
+    die;*/
     /*-----------lastname---------------*/
-    $ln = $_POST["lastName"];
+   /* $ln = $_POST["lastName"];
     if (empty($_POST["lastName"])) {
 
         echo '<script>alert ("name is required")</script>';
@@ -33,7 +33,7 @@
     }
     $resultset_2 = mysqli_query($conn, "select * from receptionist where firstname='" . $ln . "' ");
     $count = mysqli_num_rows($resultset_2);
-    die;
+    die;*/
 
     /*-------------------------------------------------------------------*/
 
@@ -60,8 +60,8 @@
             //save to database
             $guest_id = random_num(20);
             //$_SESSION['g_id'] =  $guest_id;
-            $query = " INSERT INTO guest(firstname,lastname,email,password,dateofbirth,extramembers,guest_id,phonenumber,nationality)
-        VALUES ('$fn','$ln','$email','$pass','$dof','$famCount','$guest_id','$phone','$nationality') ";
+            $query = " INSERT INTO guest(firstname,lastname,email,password,dateofbirth,extramembers,guest_id,phonenumber,nationality,state)
+        VALUES ('$fn','$ln','$email','$pass','$dof','$famCount','$guest_id','$phone','$nationality','disable') ";
             mysqli_query($conn, $query);
 
             header("Location: signin.php");
@@ -71,7 +71,7 @@
             $message = " Didn't write to database";
             echo "<script type='text/javascript'>alert('$message');</script>";
         }
-  }
+    //}
     ?>
 
 
