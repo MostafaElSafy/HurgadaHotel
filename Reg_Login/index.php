@@ -9,9 +9,9 @@
 ?>
 <?php
   /*--------------------------------Validations------------------------*/
-  if (isset($_POST['submit'])) {
+  /*if (isset($_POST['submit'])) {*/
 /*-----------firstname---------------*/
-    $fn = $_POST["firstName"];
+   /* $fn = $_POST["firstName"];
     if (empty($_POST["firstName"])) {
 
         echo '<script>alert ("name is required")</script>';
@@ -21,9 +21,9 @@
     }
     $resultset_1 = mysqli_query($conn, "select * from receptionist where firstname='" . $fn . "' ");
     $count = mysqli_num_rows($resultset_1);
-    die;
+    die;*/
     /*-----------lastname---------------*/
-    $ln = $_POST["lastName"];
+   /* $ln = $_POST["lastName"];
     if (empty($_POST["lastName"])) {
 
         echo '<script>alert ("name is required")</script>';
@@ -33,7 +33,7 @@
     }
     $resultset_2 = mysqli_query($conn, "select * from receptionist where firstname='" . $ln . "' ");
     $count = mysqli_num_rows($resultset_2);
-    die;
+    die;*/
 
     /*-------------------------------------------------------------------*/
 
@@ -71,7 +71,7 @@
             $message = " Didn't write to database";
             echo "<script type='text/javascript'>alert('$message');</script>";
         }
-  }
+    //}
     ?>
 
 
