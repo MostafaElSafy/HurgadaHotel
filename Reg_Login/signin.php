@@ -37,7 +37,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 }
 
+/*--------------------------ajax validations ------------------------------ */
+
 ?>
+    <script>
+    function validation(){
+    jQuery.ajax(
+        {
+            data: 'email='+$("#email").val(),
+            type: "POST",
+            success: function(data){
+                $("#msg").html(data);
+            }
+        });
+}
+    </script>
 
 
 <!doctype html>
@@ -94,6 +108,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             background-color: whitesmoke;
             border-color: #707070;
         }
+        .email-ok{color:#2FC332;}
+        .email-wrong{color:#D60202;}
     </style>
 
 </head>
@@ -110,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             <div class="col h-100  align-content-center  d-none d-md-block     wordSide">
 
-                <h1> Welcom Back!</h1>
+                <h1> Welcome Back!</h1>
 
                 <h6>
                     We are excited to see you again Kindly enter your credtials to log in your account
@@ -143,15 +159,32 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                             <div class="mb-3 mt-4">
                                 <label for="exampleInputEmail1" class="form-label small">Email</label>
-                                <input name="email" type="email" class="form-control" id="exampleInputEmail1">
-
+                                <input name="email" type="email" class="form-control" id="exampleInputEmail1" onkeyup=validation()>
+                                <div id="msg"></div>
+                                <?php
+                                $email = $_POST['email'];
+                                if(!empty($_POST['email']))
+                                {
+                                    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                                
+                                    
+                                    $query="SELECT email FROM guest WHERE email='".$_POST['email']."'";
+                                    $result=mysqli_query($conn, $query);
+                                
+                                    if(mysqli_num_rows($result) > 0){
+                                        echo"<div class='email-ok'> email OK. </div>"; 
+                                    }
+                                    else{
+                                        echo"<div class='email-wrong'> email wrong, try another one</div>";
+                                    }
+                                
+                                }}
+                                ?>
                             </div>
 
                             <div class="mb-5">
                                 <label for="exampleInputPassword1" class="form-label small">Password</label>
-                                <input type="password" name="password" class="form-control" id="exampleInputPassword1"
-
-                                >
+                                <input type="password" name="password" class="form-control" id="exampleInputPassword1">
 
 
                             </div>
