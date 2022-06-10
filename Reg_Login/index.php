@@ -1,5 +1,6 @@
   <!--Ajax-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
 
   <?php
     session_start();
@@ -48,30 +49,39 @@
         $famCount = $_POST['familyCount'];
         $nationality = $_POST['nationality'];
         $guest_id;
+        $sanitizedfn=filter_var($fn,FILTER_SANITIZE_STRING);
+        $sanitizedln=filter_var($ln,FILTER_SANITIZE_STRING);
+        $sanitizedDuration=filter_var($dof,FILTER_SANITIZE_NUMBER_INT);
+        $sanitizedPhone=filter_var($phone,FILTER_SANITIZE_NUMBER_INT);
+        $sanitizedemail=filter_var($email,FILTER_SANITIZE_EMAIL);
+        $sanitizedpass=filter_var($pass,FILTER_SANITIZE_STRING);
+        $sanitizednationality=filter_var($nationality,FILTER_SANITIZE_STRING);
+        if (filter_var($sanitizedemail, FILTER_VALIDATE_EMAIL)!==false){
+            /* preg match: Perform a regular expression match */
+            /*validation on firstname*/
+        
+                if (!empty($email) && !empty($phone)) {
+        
+                    //save to database
+                    $guest_id = random_num(20);
+                    //$_SESSION['g_id'] =  $guest_id;
+                    $query = " INSERT INTO guest(firstname,lastname,email,password,dateofbirth,extramembers,guest_id,phonenumber,nationality,state)
+                VALUES ('$fn','$ln','$email','$pass','$dof','$famCount','$guest_id','$phone','$nationality','disable') ";
+                    mysqli_query($conn, $query);
+        
+                    header("Location: signin.php");
+                    die;
+                } else {
+        
+                    $message = " Didn't write to database";
+                    echo "<script type='text/javascript'>alert('$message');</script>";
+                }
+            }else{
+                echo'<div class="alert alert-danger" role="alert">
+                Eror in data you enter
+              </div>';
+            }
     }
-
-
-
-    /* preg match: Perform a regular expression match */
-    /*validation on firstname*/
-
-        if (!empty($email) && !empty($phone)) {
-
-            //save to database
-            $guest_id = random_num(20);
-            //$_SESSION['g_id'] =  $guest_id;
-            $query = " INSERT INTO guest(firstname,lastname,email,password,dateofbirth,extramembers,guest_id,phonenumber,nationality,state)
-        VALUES ('$fn','$ln','$email','$pass','$dof','$famCount','$guest_id','$phone','$nationality','disable') ";
-            mysqli_query($conn, $query);
-
-            header("Location: signin.php");
-            die;
-        } else {
-
-            $message = " Didn't write to database";
-            echo "<script type='text/javascript'>alert('$message');</script>";
-        }
-    //}
     ?>
 
 

@@ -162,23 +162,24 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 <input name="email" type="email" class="form-control" id="exampleInputEmail1" onkeyup=validation()>
                                 <div id="msg"></div>
                                 <?php
-                                $email = $_POST['email'];
+                                
                                 if(!empty($_POST['email']))
                                 {
+                                    $email = $_POST['email'];
                                     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                                 
+                                        $query="SELECT email FROM guest WHERE email='".$email."'";
+                                        $result=mysqli_query($conn, $query);
                                     
-                                    $query="SELECT email FROM guest WHERE email='".$_POST['email']."'";
-                                    $result=mysqli_query($conn, $query);
-                                
-                                    if(mysqli_num_rows($result) > 0){
-                                        echo"<div class='email-ok'> email OK. </div>"; 
+                                        if(mysqli_num_rows($result) > 0){
+                                            echo"<div class='email-ok'> email OK. </div>"; 
+                                        }
+                                        else{
+                                            echo"<div class='email-wrong'> email wrong, try another one</div>";
+                                        }
+                            
                                     }
-                                    else{
-                                        echo"<div class='email-wrong'> email wrong, try another one</div>";
-                                    }
-                                
-                                }}
+                                }
                                 ?>
                             </div>
 
