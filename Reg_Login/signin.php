@@ -37,22 +37,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 }
 
-/*--------------------------ajax validations ------------------------------ */
-
 ?>
+
     <script>
     function validation(){
     jQuery.ajax(
         {
-            data: 'email='+$("#email").val(),
+            url:"signin.php",
+            data: 'email='+$("email").val(),
             type: "POST",
             success: function(data){
-                $("#msg").html(data);
+                $("msg").html(data);
             }
         });
 }
     </script>
-
 
 <!doctype html>
 <html lang="en">
@@ -159,16 +158,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                             <div class="mb-3 mt-4">
                                 <label for="exampleInputEmail1" class="form-label small">Email</label>
-                                <input name="email" type="email" class="form-control" id="exampleInputEmail1" onkeyup=validation()>
+                                <input name="email" type="email" class="form-control" id="exampleInputEmail1" onkeyup="validation()">
                                 <div id="msg"></div>
                                 <?php
-                                
                                 if(!empty($_POST['email']))
                                 {
                                     $email = $_POST['email'];
-                                    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                                 
-                                        $query="SELECT email FROM guest WHERE email='".$email."'";
+                                        $query="SELECT * FROM guest WHERE email='".$email."'";
                                         $result=mysqli_query($conn, $query);
                                     
                                         if(mysqli_num_rows($result) > 0){
@@ -179,14 +176,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                         }
                             
                                     }
-                                }
                                 ?>
                             </div>
 
                             <div class="mb-5">
                                 <label for="exampleInputPassword1" class="form-label small">Password</label>
                                 <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-
 
                             </div>
 
