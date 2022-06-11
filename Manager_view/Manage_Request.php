@@ -77,7 +77,7 @@ include("../functions.php");
                 die("Connection Failed: " . mysqli_connect_error());
             }
 
-            $query = "SELECT * FROM guest ";
+            $query = "SELECT * FROM guest WHERE state='disable'";
             $result = $conn->query($query);
             if (!$result) {
                 die("Fatal Query error");
@@ -106,66 +106,6 @@ include("../functions.php");
 
         </tbody>
     </table>
-  <!--<div class="tab-pane fade" id="nav-Request" role="tabpanel" aria-labelledby="nav-Request-tab"></div>
-  <table class="table table-striped table-hover">
-    <thead class="dark1">
-      <tr>
-        <th scope="col"></th>
-        <th scope="col"> First Name</th>
-        <th scope="col"> Last Name</th>
-        <th scope="col">E mail</th>
-        <th scope="col"> Password</th>
-        <th scope="col">Date of Birth</th>
-        <th scope="col"> Extra Members</th>
-        <th scope="col">Guest ID </th>
-        <th scope="col"> Phone Number </th>
-        <th scope="col"> Nationality </th>
-        <th scope="col"> Actions </th>
-        
-        <th scope="col"> </th>
-      </tr>
-    </thead>
-
-    <tbody>-->
-
-      <!--Connecting the table that appears to the receptionist with the database-->
-      
-     <!-- $conn = new mysqli("localhost", "root", "", "hurghada_db");
-      if (!$conn) {
-        die("Connection Failed: " . mysqli_connect_error());
-      }
-
-      $query = "SELECT * FROM guest ";
-      $result=mysqli_query($conn,$query);
-      if (!$result) {
-        die("Fatal Query error");
-      }
-      
-      $rows = $result->num_rows;
-
-      for ($j = 0; $j < $rows; $j++) {
-        $row = $result->fetch_array(MYSQLI_ASSOC);
-        $guest_id = $row['guest_id'];
-        echo '<tr><td> ' . $row['firstname'] . '</td> <td> ' . $row['lastname'] . '</td><td>' . $row['email'] . ' </td> <td> ' . $row['password'] . '</td><td> ' . $row['dateofbirth'] . '</td><td> ' . $row['extramembers'] . '</td><td> ' . $row['phonenumber'] . '</td><td> ' . $row['nationality'] . '</td>';
-        echo '<td>
-              <div class="row">
-              <div class="col">
-              <button class="btn btn-primary btn-sm">Accept</button>
-              <button class="btn btn-danger btn-sm px-3">Reject</button>
-              </div>
-              </div>
-              </td>';
-        echo "</tr>";
-      }
-      ?>
-    </tbody>
-  </table>
-
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-    <button type="button" class="btn btn-primary">Save </button>
-  </div>-->
-
 </body>
 
 </html>
