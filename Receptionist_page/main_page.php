@@ -97,7 +97,7 @@ include("../functions.php");
       <div>
         <button type="button" class="btn btn-secondary btn-sm px-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <img src="../assets/img/ic_add_box_24px.png" style=" margin:4px ;" alt="">
-          Add
+          Requests
         </button>
       </div>
     </div>
@@ -185,7 +185,7 @@ include("../functions.php");
                   if (!$conn) {
                     die("Connection Failed: " . mysqli_connect_error());
                   }
-                  $query = "SELECT reserve_id,room_id,fn FROM reserve";
+                  $query = "SELECT reserve_id,room_id,fn FROM reserve WHERE roompending='pending'";
                   $result = $conn->query($query);
                   if (!$result) {
                     die("Fatal Query error");
@@ -208,32 +208,7 @@ include("../functions.php");
                     echo "</tr>";
                   }
                   ?>
-                  <!--<tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td> <div class="btn btn-primary btn-sm">Accept</div></td>
-
-      <td> <div class="btn btn-danger btn-sm px-3">Reject</div></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td> <div class="btn btn-primary btn-sm">Accept</div></td>
-
-      <td> <div class="btn btn-danger btn-sm px-3">Reject</div></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-      <td> <div class="btn btn-primary btn-sm">Accept</div></td>
-
-      <td> <div class="btn btn-danger btn-sm px-3">Reject</div></td>
-    </tr>----->
+      
                 </tbody>
               </table>
 

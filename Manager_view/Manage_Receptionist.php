@@ -216,7 +216,17 @@ include("../functions.php");
                             $phonenumber = $_POST['phonenumber'];
                             $address = $_POST['address'];
                             $national_id = $_POST['national_id'];
-
+                           
+                            $sanitizedfn = filter_var($firstname, FILTER_SANITIZE_STRING);
+                            $sanitizedln = filter_var($lastname, FILTER_SANITIZE_STRING);
+                            $sanitizedun = filter_var($username, FILTER_SANITIZE_STRING);
+                            $sanitizedpass = filter_var($password, FILTER_SANITIZE_STRING);
+                            $sanitizede = filter_var($email, FILTER_SANITIZE_EMAIL);
+                            $sanitizeddob = filter_var($dateofbirth, FILTER_SANITIZE_NUMBER_INT);
+                            $sanitizedpn = filter_var($phonenumber, FILTER_SANITIZE_NUMBER_INT);
+                            $sanitizedadd = filter_var($address, FILTER_SANITIZE_STRING);
+                            $sanitizednid = filter_var($national_id, FILTER_SANITIZE_NUMBER_INT);
+                            if(filter_var($sanitizede,FILTER_VALIDATE_EMAIL)){
                             if (!$conn) {
                                 die("Connection Failed: " . mysqli_connect_error());
                             }
@@ -224,8 +234,17 @@ include("../functions.php");
                             VALUES ('$firstname','$lastname','$username','$password','$email','$dateofbirth','$phonenumber','$address','$national_id') ";
 
                             $result = mysqli_query($conn, $sql);
+                            /*if($result){
                             header("Location: Manage_Receptionist.php");
-                        }
+                            }else{
+                                die(mysqli_error($conn));
+                            }*/
+                        }else{
+                            echo'<div class="alert alert-danger" role="alert">
+                                          Eror in data you enter
+                                        </div>';
+                          }
+                    }
 
                     
                         ?>
@@ -269,10 +288,9 @@ include("../functions.php");
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                 <button type="submit" class="btn btn-primary" name="submit" onclick="validateform()">Save </button>
                             </div>
+                        </form>
                     </div>
                 </div>
-
-
 </body>
 
 </html>
