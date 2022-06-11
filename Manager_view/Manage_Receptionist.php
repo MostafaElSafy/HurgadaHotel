@@ -206,81 +206,6 @@ include("../functions.php");
                         <?php
                         if (isset($_POST['submit'])) {
 
-                            $firstname = $_POST["firstname"];
-                            if (empty($_POST["firstname"])) {
-
-                                echo '<script>alert ("name is required")</script>';
-                            }
-                            if (!preg_match("/[a-zA-Z]/", $firstname)) {
-                                echo '<script> alert("firstname") </script> ';
-                            }
-
-                            $lastname = $_POST["lastname"];
-                            if (empty($_POST["lastname"])) {
-
-                                echo '<script>alert ("name is required")</script>';
-                            }
-                            if (!preg_match("/[a-zA-Z]/", $lastname)) {
-                                echo '<script> alert("lastname") </script> ';
-                            }
-                            $username = $_POST["username"];
-                            if (empty($_POST["usernname"])) {
-                                echo '<script>alert ("username is required")</script>';
-                            }
-
-                            $resultset_1 = mysqli_query($conn, "select * from receptionist where firstname='" . $firstname . "' ");
-                            $count = mysqli_num_rows($resultset_1);
-                            die;   /* to turn off the connection*/
-                            $resultset_2 = mysqli_query($conn, "select * from receptionist where lastname='" . $lastname . "' ");
-                            $count = mysqli_num_rows($resultset_2);
-                            die;   /* to turn off the connection*/
-                            $resultset_3 = mysqli_query($conn, "select * from receptionist where username='" . $username . "' ");
-                            $count = mysqli_num_rows($resultset_3);
-                            die;   /* to turn off the connection*/
-                            
-
-                            if (!preg_match("/^[0-9a-zA-Z]+$/", $password)) {
-                            $password = $_POST["password"];
-                            if (empty($_POST["password"])) {
-                                echo '<script>alert ("password is required")</script>';
-                            }
-
-                            $email = $_POST["email"];
-                            if (empty($_POST["email"])) {
-                                echo '<script>alert ("email is required")</script>';
-                            }
-
-                            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                                echo '<script>alert ("invalid email format")</script>';
-                            }
-
-
-                            $phonenumber = $_POST["phonenumber"];
-                            if (empty($_POST["phonenumber"])) {
-                                echo '<script>alert ("phone is required")</script>';
-                            }
-
-                            $address = $_POST["address"];
-                            if (empty($_POST["address"])) {
-                                echo '<script>alert ("address is required")</script>';
-                            }
-
-                            $resultset_4 = mysqli_query($conn, "select * from receptionist where address='" . $address . "' ");
-                            $count = mysqli_num_rows($resultset_4);
-                            die; 
-
-                           $dateofbirth = $_POST["dateofbirth"];
-                            if (empty($_POST["dateofbirth"])) {
-                                echo '<script>alert ("dateofbirth is required")</script>';
-                            }
-
-                            $national_id = $_POST["national_id"];
-                            if (empty($_POST["national_id"])) {
-                                echo '<script>alert ("national_id is required")</script>';
-                            }
-
-                        
-
                             //something was posted
                             $firstname = $_POST['firstname'];
                             $lastname = $_POST['lastname'];
@@ -299,9 +224,10 @@ include("../functions.php");
                             VALUES ('$firstname','$lastname','$username','$password','$email','$dateofbirth','$phonenumber','$address','$national_id') ";
 
                             $result = mysqli_query($conn, $sql);
+                            header("Location: Manage_Receptionist.php");
                         }
 
-                    }
+                    
                         ?>
 
                         <form method="post">

@@ -29,6 +29,14 @@ if(isset($_POST['submit'])){
     $price=$_POST['price'];
     $type=$_POST['type'];
     $view=$_POST['view'];
+
+    $sanitizedid=filter_var($id,FILTER_SANITIZE_NUMBER_INT);
+    $sanitizedstay=filter_var($stay,FILTER_SANITIZE_NUMBER_INT);
+    $sanitizedprice=filter_var($price,FILTER_SANITIZE_NUMBER_INT);
+    $sanitizedtype=filter_var($type,FILTER_SANITIZE_STRING);
+    $sanitizedview=filter_var($view,FILTER_SANITIZE_STRING);
+   
+    if(filter_var($sanitizedstay,FILTER_VALIDATE_INT)){
     $sql="UPDATE rooms SET room_id='$id' ,stay_duration='$stay',price='$price',room_type='$type',room_view='$view' WHERE room_id=$roomid";
     $result=mysqli_query($conn,$sql);
      if($result){
@@ -37,6 +45,11 @@ if(isset($_POST['submit'])){
      }else{
          die(mysqli_error($conn));
      }
+    }else{
+  echo'<div class="alert alert-danger" role="alert">
+                Eror in data you enter
+              </div>';
+}
 }
 ?>
 <div class="container my-5">
