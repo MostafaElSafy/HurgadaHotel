@@ -42,6 +42,18 @@ if(isset($_POST['submit'])){
     $address=$_POST['address'];
     $national_id=$_POST['national_id'];
 
+    $sanitizedid = filter_var($receptionist_id, FILTER_SANITIZE_NUMBER_INT);
+    $sanitizedfn = filter_var($firstname, FILTER_SANITIZE_STRING);
+    $sanitizedln = filter_var($lastname, FILTER_SANITIZE_STRING);
+    $sanitizedun = filter_var($username, FILTER_SANITIZE_STRING);
+    $sanitizedpass = filter_var($password, FILTER_SANITIZE_STRING);
+    $sanitizede = filter_var($email, FILTER_SANITIZE_EMAIL);
+    $sanitizeddob = filter_var($dateofbirth, FILTER_SANITIZE_NUMBER_INT);
+    $sanitizedpn = filter_var($phonenumber, FILTER_SANITIZE_NUMBER_INT);
+    $sanitizedadd = filter_var($address, FILTER_SANITIZE_STRING);
+    $sanitizednid = filter_var($national_id, FILTER_SANITIZE_NUMBER_INT);
+
+
     $sql="UPDATE receptionist SET receptionist_id='$receptionist_id' ,firstname='$firstname',lastname='$lastname',username='$username',password='$password',email='$email',dateofbirth='$dateofbirth',phonenumber='$phonenumber',address='$address',national_id='$national_id' WHERE receptionist_id=$receptionist_id";
     $result=mysqli_query($conn,$sql);
      if($result){
