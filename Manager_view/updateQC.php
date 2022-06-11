@@ -52,7 +52,7 @@ if(isset($_POST['submit'])){
     $sanitizedpn = filter_var($phonenumber, FILTER_SANITIZE_NUMBER_INT);
     $sanitizedadd = filter_var($address, FILTER_SANITIZE_STRING);
     $sanitizednid = filter_var($national_id, FILTER_SANITIZE_NUMBER_INT);
-
+    if(filter_var($sanitizede,FILTER_VALIDATE_EMAIL)){
 
     $sql="UPDATE receptionist SET receptionist_id='$receptionist_id' ,firstname='$firstname',lastname='$lastname',username='$username',password='$password',email='$email',dateofbirth='$dateofbirth',phonenumber='$phonenumber',address='$address',national_id='$national_id' WHERE receptionist_id=$receptionist_id";
     $result=mysqli_query($conn,$sql);
@@ -62,6 +62,11 @@ if(isset($_POST['submit'])){
      }else{
          die(mysqli_error($conn));
      }
+  }else{
+    echo'<div class="alert alert-danger" role="alert">
+                  Eror in data you enter
+                </div>';
+  }
 }
 ?>
 <div class="container my-5">
