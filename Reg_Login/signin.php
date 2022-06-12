@@ -4,7 +4,7 @@ session_start();
 
 include("../db_connect.php");
 include("../functions.php");
-
+ /* error_reporting (E_ALL ^ E_NOTICE); */  /* This code is to not show notice error in this page i use it instead of  isset function  */
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     //something was posted
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 $user_data = mysqli_fetch_assoc($result);
 
-                if ($user_data['password'] === $password) {
+                if ($user_data['password'] === $password && $user_data['state']=='active') {
                     $_SESSION['name'] = $user_data['firstname'];
                     $_SESSION['user_id'] = $user_data['user_id'];
                     header("Location: reservation.php");
@@ -164,17 +164,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 if(!empty($_POST['email']))
                                 {
                                     $email = $_POST['email'];
-                                
+
                                         $query="SELECT * FROM guest WHERE email='".$email."'";
                                         $result=mysqli_query($conn, $query);
-                                    
+
                                         if(mysqli_num_rows($result) > 0){
-                                            echo"<div class='email-ok'> email OK. </div>"; 
+                                            echo"<div class='email-ok'> email OK. </div>";
                                         }
                                         else{
                                             echo"<div class='email-wrong'> email wrong, try another one</div>";
                                         }
-                            
+
                                     }
                                 ?>
                             </div>

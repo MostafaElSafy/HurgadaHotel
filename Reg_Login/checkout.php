@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (!empty($comm) && !empty($rate)) {
 
         $query = " INSERT INTO rating(comments,entire_stay,rating_room,rating_id)
-    VALUES ('$comm','$stay','$roomnum',' $rateid') ";
+    VALUES ('$comm','$stay','$rate',' $rateid') ";
         mysqli_query($conn, $query);
         header("Location: reservation.php");
         die;

@@ -1,6 +1,6 @@
   <!--Ajax-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  
+
 
   <?php
     session_start();
@@ -9,34 +9,6 @@
     include("../functions.php");
 ?>
 <?php
-  /*--------------------------------Validations------------------------*/
-  /*if (isset($_POST['submit'])) {*/
-/*-----------firstname---------------*/
-   /* $fn = $_POST["firstName"];
-    if (empty($_POST["firstName"])) {
-
-        echo '<script>alert ("name is required")</script>';
-    }
-    if (!preg_match("/[a-zA-Z]/", $fn)) {
-        echo '<script> alert("first name is not in correct format") </script> ';
-    }
-    $resultset_1 = mysqli_query($conn, "select * from receptionist where firstname='" . $fn . "' ");
-    $count = mysqli_num_rows($resultset_1);
-    die;*/
-    /*-----------lastname---------------*/
-   /* $ln = $_POST["lastName"];
-    if (empty($_POST["lastName"])) {
-
-        echo '<script>alert ("name is required")</script>';
-    }
-    if (!preg_match("/[a-zA-Z]/", $ln)) {
-        echo '<script> alert("first name is not in correct format") </script> ';
-    }
-    $resultset_2 = mysqli_query($conn, "select * from receptionist where firstname='" . $ln . "' ");
-    $count = mysqli_num_rows($resultset_2);
-    die;*/
-
-    /*-------------------------------------------------------------------*/
 
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         //something was posted
@@ -59,20 +31,20 @@
         if (filter_var($sanitizedemail, FILTER_VALIDATE_EMAIL)!==false){
             /* preg match: Perform a regular expression match */
             /*validation on firstname*/
-        
+
                 if (!empty($email) && !empty($phone)) {
-        
+
                     //save to database
-                    $guest_id = random_num(20);
+                    $guest_id = random_num(6);
                     //$_SESSION['g_id'] =  $guest_id;
                     $query = " INSERT INTO guest(firstname,lastname,email,password,dateofbirth,extramembers,guest_id,phonenumber,nationality,state)
                 VALUES ('$fn','$ln','$email','$pass','$dof','$famCount','$guest_id','$phone','$nationality','disable') ";
                     mysqli_query($conn, $query);
-        
+
                     header("Location: signin.php");
                     die;
                 } else {
-        
+
                     $message = " Didn't write to database";
                     echo "<script type='text/javascript'>alert('$message');</script>";
                 }
@@ -180,7 +152,7 @@
                                               var password = document.getElementById("pass").value;
                                               var confirmPassword = document.getElementById("cpass").value;
                                               if (password != confirmPassword) {
-                                                  alert("You first Passwords is not similar with 2nd password. Please enter same password in both");
+                                                  alert("Password Unmatch");
                                                   return false;
                                               }
                                               return true;

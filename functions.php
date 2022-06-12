@@ -28,14 +28,14 @@ function random_num($length)
 {
 
     $text = "";
-    if ($length < 5) {
-        $length = 5;
+    if ($length < 4) {
+        $length = 4;
     }
 
-    $len = rand(4, $length);
+    $len = rand(3, $length);
 
     for ($i = 0; $i < $len; $i++) {
-        $text .= rand(0, 7);
+        $text .= rand(0, 6);
     }
 
     return $text;
