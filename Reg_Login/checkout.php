@@ -3,9 +3,33 @@ session_start();
 include("../db_connect.php");
 include("../functions.php");
 ?>
-<?php error_reporting (E_ALL ^ E_NOTICE); ?>    <!-- This code is to not show notice error in this page i use it instead of  isset function -->
+<?php error_reporting(E_ALL ^ E_NOTICE); ?>
 
-<!-- to ignore el notice messages instead of -->
+
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    //something was posted
+    $comm = $_POST['comment'];
+    $rate = $_POST['rating-star'];
+    $roomnum = $_POST['roomnum'];
+    $stay = 0;
+    $rateid = 2;
+
+
+
+    if (!empty($comm) && !empty($rate)) {
+
+        $query = " INSERT INTO rating(comments,entire_stay,rating_room,rating_id)
+    VALUES ('$comm','$stay','$roomnum',' $rateid') ";
+        mysqli_query($conn, $query);
+        header("Location: reservation.php");
+        die;
+    }
+}
+
+?>
+
 
 <!doctype html>
 <html lang="en">
@@ -18,11 +42,163 @@ include("../functions.php");
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+    <!-- REACT -->
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+
+    <!-- REACT END -->
+
     <title>Hello, world!</title>
     <link rel="stylesheet" href="reservation.css">
+
+    <style>
+        /*
+=====
+DEPENDENCES
+=====
+*/
+
+        .screen-reader {
+            width: var(--screenReaderWidth, 1px) !important;
+            height: var(--screenReaderHeight, 1px) !important;
+            padding: var(--screenReaderPadding, 0) !important;
+            border: var(--screenReaderBorder, none) !important;
+
+            position: var(--screenReaderPosition, absolute) !important;
+            clip: var(--screenReaderClip, rect(1px, 1px, 1px, 1px)) !important;
+            overflow: var(--screenReaderOverflow, hidden) !important;
+        }
+
+        /*
+=====
+CORE STYLES
+=====
+*/
+        .rating {
+            --uiRatingColor: var(--ratingColor, #eee);
+            --uiRatingColorActive: var(--ratingColorActive, #ffcc00);
+
+            display: var(--ratingDisplay, flex);
+            font-size: var(--ratingSize, 1rem);
+            color: var(--uiRatingColor);
+        }
+
+        .rating__control:nth-of-type(1):focus~.rating__item:nth-of-type(1)::before,
+        .rating__control:nth-of-type(2):focus~.rating__item:nth-of-type(2)::before,
+        .rating__control:nth-of-type(3):focus~.rating__item:nth-of-type(3)::before,
+        .rating__control:nth-of-type(4):focus~.rating__item:nth-of-type(4)::before,
+        .rating__control:nth-of-type(5):focus~.rating__item:nth-of-type(5)::before {
+            content: "";
+            box-shadow: 0 0 0 var(--ratingOutlineWidth, 4px) var(--uiRatingColorActive);
+
+            position: absolute;
+            top: -.15em;
+            right: 0;
+            bottom: -.15em;
+            left: 0;
+            z-index: -1;
+        }
+
+        .rating__item {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .rating__item {
+            padding-left: .25em;
+            padding-right: .25em;
+        }
+
+        .rating__star {
+            display: block;
+            width: 1em;
+            height: 1em;
+
+            fill: currentColor;
+            stroke: var(--ratingStroke, #222);
+            stroke-width: var(--ratingStrokeWidth, 1px);
+        }
+
+        .rating:hover,
+        .rating__control:nth-of-type(1):checked~.rating__item:nth-of-type(1),
+        .rating__control:nth-of-type(2):checked~.rating__item:nth-of-type(-n+2),
+        .rating__control:nth-of-type(3):checked~.rating__item:nth-of-type(-n+3),
+        .rating__control:nth-of-type(4):checked~.rating__item:nth-of-type(-n+4),
+        .rating__control:nth-of-type(5):checked~.rating__item:nth-of-type(-n+5) {
+            color: var(--uiRatingColorActive);
+        }
+
+        .rating__item:hover~.rating__item {
+            color: var(--uiRatingColor);
+        }
+
+        /*
+=====
+SETTINGS
+=====
+*/
+
+        .rating {
+            --ratingSize: 2rem;
+            --ratingColor: #eee;
+            --ratingColorActive: #ffcc00;
+        }
+
+        /*
+=====
+DEMO
+=====
+*/
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+        }
+
+        .page__demo {
+            margin: auto;
+        }
+
+        .page__group {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .page__hint {
+            display: block;
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+
+        @media (min-width: 641px) {
+            .page__demo {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page__group {
+                margin-left: 3.5rem;
+                margin-right: 3.5rem;
+            }
+        }
+    </style>
+
 </head>
 
 <body class="bg-light">
+
+
+
 
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -51,129 +227,133 @@ include("../functions.php");
 
     <div class="container">
         <div class="row">
-            <h2 class="mt-4">
-                Thank You for your stay , See You soon !
+            <h2 class="mt-4 mb-4">
+                Thank You for your stay , Please Give us a feedback.
             </h2>
         </div>
 
-        <form method="POST" class="row g-3 mt-2">
-            <div class="col-md-2">
-                <label class="form-label">From</label>
-                <input type="date" class="form-control" name="from">
-            </div>
-            <div class="col-md-2">
-                <label class="form-label">To</label>
-                <input type="date" class="form-control" name="to">
-            </div>
+        <div class="row">
+            <form method="POST">
 
-            <div class=" col-md-2">
-                <label class="form-label">Room View</label>
-                <select class="form-select" aria-label="Default select example" name="view">
-                    <option value="sea">Sea View</option>
-                    <option value="garden">Garden View</option>
+                <div class="col-3">
+                    <div class="mb-3">
+                        <label class="form-label">Room number</label>
+                        <input name="roomnum" type="number" class="form-control col-3">
+                    </div>
+                </div>
 
-                </select>
-            </div>
-            <div class=" col-md-2">
-                <label class="form-label">Room type</label>
-                <select class="form-select" aria-label="Default select example" name="type">
-                    <option value="Single">Single</option>
-                    <option value="Double">Double</option>
-                    <option value="Triple">Triple</option>
-                    <option value="Suite">Suite</option>
-                </select>
-            </div>
+                <div class="col">
+                    <textarea id="app" name="comment" value="text" cols="140" rows="5"></textarea>
+                </div>
 
-            <div class="col-md-1">
-                <label class="form-label">Guests</label>
-                <select class="form-select" aria-label="Default select example" name="guests">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-            </div>
+                <div class="col ">
 
-            <div class="col-md-3  mt-5">
-                <button type="submit" class="btn btn-primary rounded-pill">Check Availabillity</button>
-            </div>
+                    <div class="page__demo">
+                        <div class="page__group">
+                            <div class="rating">
+                                <input type="radio" name="rating-star" class="rating__control screen-reader" id="rc1">
+                                <input type="radio" name="rating-star" class="rating__control screen-reader" id="rc2">
+                                <input type="radio" name="rating-star" class="rating__control screen-reader" id="rc3">
+                                <input type="radio" name="rating-star" class="rating__control screen-reader" id="rc4">
+                                <input type="radio" name="rating-star" class="rating__control screen-reader" id="rc5">
 
-            <div class="col-md-3  ">
-                <a href="customReserve.php">I have a diffrent plan</a>
-            </div>
 
-        </form>
+                                <label for="rc1" class="rating__item">
+                                    <svg class="rating__star">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                    <span class="screen-reader">1</span>
+                                </label>
+                                <label for="rc2" class="rating__item">
+                                    <svg class="rating__star">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                    <span class="screen-reader">2</span>
+                                </label>
+                                <label for="rc3" class="rating__item">
+                                    <svg class="rating__star">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                    <span class="screen-reader">3</span>
+                                </label>
+                                <label for="rc4" class="rating__item">
+                                    <svg class="rating__star">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                    <span class="screen-reader">4</span>
+                                </label>
+                                <label for="rc5" class="rating__item">
+                                    <svg class="rating__star">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                    <span class="screen-reader">5</span>
+                                </label>
+                            </div>
+                            <span class="page__hint">Room Rating</span>
+                        </div>
 
-        <hr>
-        <!-- ////////////ROOMS///////////////// -->
 
-        <div class="row mt-3">
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+                        <symbol id="star" viewBox="0 0 26 28">
+                            <path d="M26 10.109c0 .281-.203.547-.406.75l-5.672 5.531 1.344 7.812c.016.109.016.203.016.313 0 .406-.187.781-.641.781a1.27 1.27 0 0 1-.625-.187L13 21.422l-7.016 3.687c-.203.109-.406.187-.625.187-.453 0-.656-.375-.656-.781 0-.109.016-.203.031-.313l1.344-7.812L.39 10.859c-.187-.203-.391-.469-.391-.75 0-.469.484-.656.875-.719l7.844-1.141 3.516-7.109c.141-.297.406-.641.766-.641s.625.344.766.641l3.516 7.109 7.844 1.141c.375.063.875.25.875.719z" />
+                        </symbol>
+                    </svg>
+                    <button type="submit" class="btn btn-outline-primary">Submit</button>
+                </div>
+            </form>
 
-            <div class="col">
-                <h5>
-                    Available rooms
-                </h5>
-            </div>
 
         </div>
-        <div class="row mt-2">
-
-            <div class="container">
-
-                <table class="table table-responsive table-striped table-hover">
-                    <thead class="text-center" style="background-color: #0096c7 ; color:  rgba(242, 242, 242, 0.982);; font-weight:500;">
-                        <tr>
-
-                            <th scope="col" class="col-lg-1">Room no</th>
-                            <th scope="col" class="col-lg-1"> Type</th>
-                            <th scope="col" class="col-lg-1"> View</th>
-                            <th scope="col" class="col-lg-1">Price</th>
-                            <th scope="col" class="col-lg-1">Max persons</th>
-                            <th scope="col" class="col-lg-1">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-center">
-                        <?php
-
-                          $conn = new mysqli("localhost", "root", "", "hurghada_db");
-                        if (!$conn) {
-                            die("Connection Failed: " . mysqli_connect_error());
-                        }
-                        $query = "SELECT room_id,room_type,room_view,price,max  FROM rooms WHERE room_view='$_POST[view]' AND room_type= '$_POST[type]' AND max >= '$_POST[guests]' ";
-                        $result = $conn->query($query);
-                        if (!$result)
-                        {
-                            die("Fatal Query error");
-                        }
-
-                        $rows = $result->num_rows;
-                        for ($j = 0; $j < $rows; $j++) {
-
-                            $row = $result->fetch_array(MYSQLI_ASSOC);
-
-                            $_SESSION['R_id'] =  $row['room_id'];
 
 
-                            echo "<tr> <td> " . $row['room_id'] . "</td> <td> " . $row['room_type'] . "</td><td>" . $row['room_view'] . " </td> <td>" . $row['price']
-                              . "</td><td>" . $row['max'] . " </td>" . "<td>  <a class='btn btn-outline-primary' href='img.php' role='button'>Reserve</a> </td>";
-                            }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+
+
 
     </div>
 
 
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
+    <!--     <script>
+        class Textarea extends React.component {
+            constructor() {
+
+                super();
+                this.state = {};
+            }
+            onTextChange(event) {
+
+                this.setstate({
+                    text: event.target.value,
+
+                });
+            }
+            render() {
+                const text = 'text' in this.state ? this.state.text : this.props.text;
+                return(
+                <div>
+                <Textarea value={text} onChange={event=> this.onTextChange(event) }
+
+                />
+
+                <h3>{text.length}</h3>
+                </div>
+                );
+            }
+
+        }
+ReactDOM.render(
+<Textarea text="Your Comments"/>,
+document.getElementById('app')
+);
+
+
+    </script> -->
 </body>
 
 </html>
