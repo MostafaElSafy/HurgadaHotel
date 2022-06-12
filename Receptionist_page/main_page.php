@@ -47,7 +47,7 @@ include("../functions.php");
             </li>
           </ul>
           <span class="navbar-text">
-            <a class="nav-link" href="logout.php">Logout</a>
+            <a class="nav-link" href="../Reg_Login/login.php">Logout</a>
           </span>
         </div>
       </div>
@@ -208,7 +208,7 @@ include("../functions.php");
                     echo "</tr>";
                   }
                   ?>
-      
+
                 </tbody>
               </table>
 
